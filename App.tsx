@@ -10,6 +10,7 @@ import { ViewState } from './types';
 import { BusinessType } from './components/dashboard/config';
 import { ThemeProvider } from './components/common/ThemeContext';
 import { RAY_DESIGN_SYSTEM, rayUtils } from './components/common/DesignSystem';
+import { GlobalSettingsProvider } from './components/common/GlobalSettings';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -74,7 +75,8 @@ const App: React.FC = () => {
   }
 
   return (
-    <ThemeProvider>
+    <GlobalSettingsProvider>
+      <ThemeProvider>
       {currentView === ViewState.MARKETPLACE && (
         <Marketplace 
           onMerchantClick={handleMerchantEntry} 
@@ -105,7 +107,8 @@ const App: React.FC = () => {
       {currentView === ViewState.TRAINING && <FAQView onPageNavigation={handlePageNavigation} />}
       {currentView === ViewState.MARKET && <Marketplace onMerchantClick={handleMerchantEntry} onAdminLogin={handleAdminLogin} onPageNavigation={handlePageNavigation} />}
       {currentView === ViewState.REFUND_POLICY && <FAQView onPageNavigation={handlePageNavigation} />}
-    </ThemeProvider>
+      </ThemeProvider>
+    </GlobalSettingsProvider>
   );
 };
 
