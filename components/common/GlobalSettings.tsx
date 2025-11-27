@@ -22,6 +22,25 @@ export const useGlobalSettings = () => {
   return context;
 };
 
+// Safe version that doesn't throw errors
+export const useGlobalSettingsSafe = () => {
+  const context = useContext(GlobalSettingsContext);
+  if (!context) {
+    // Return default values instead of throwing error
+    return {
+      currentLanguage: 'ar' as const,
+      isDarkMode: false,
+      deviceType: 'desktop' as const,
+      isMobileMenuOpen: false,
+      toggleLanguage: () => {},
+      toggleDarkMode: () => {},
+      toggleMobileMenu: () => {},
+      setDeviceType: () => {}
+    };
+  }
+  return context;
+};
+
 export const GlobalSettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState<'ar' | 'en'>('ar');
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -348,7 +367,7 @@ export const translations = {
 // دالة للحصول على الترجمة
 export const useTranslation = () => {
   try {
-    const { currentLanguage } = useGlobalSettings();
+    const { currentLanguage } = useGlobalSettingsSafe();
     return translations[currentLanguage];
   } catch (error) {
     // Fallback to Arabic if GlobalSettingsProvider is not available
@@ -359,7 +378,7 @@ export const useTranslation = () => {
 // دالة للتحقق من نوع الجهاز
 export const useResponsive = () => {
   try {
-    const { deviceType } = useGlobalSettings();
+    const { deviceType } = useGlobalSettingsSafe();
     
     return {
       isMobile: deviceType === 'mobile',
@@ -381,7 +400,7 @@ export const useResponsive = () => {
 // دالة للتصميم المتجاوب
 export const useResponsiveClasses = () => {
   try {
-    const { deviceType } = useGlobalSettings();
+    const { deviceType } = useGlobalSettingsSafe();
     
     return {
       container: deviceType === 'mobile' ? 'px-4' : deviceType === 'tablet' ? 'px-6' : 'px-8',
@@ -405,7 +424,7 @@ export const useResponsiveClasses = () => {
 // دالة للألوان الديناميكية
 export const useThemeColors = () => {
   try {
-    const { isDarkMode } = useGlobalSettings();
+    const { isDarkMode } = useGlobalSettingsSafe();
     
     return {
       background: isDarkMode ? 'bg-gray-900' : 'bg-white',
