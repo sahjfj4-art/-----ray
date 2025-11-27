@@ -238,8 +238,7 @@ const AllSystemsShowcase: React.FC<AllSystemsShowcaseProps> = ({ onSystemSelect 
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-1">
                                 <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                                <span className="text-sm font-bold text-gray-700 dark:text-gray-300">4.9</span>
-                                <span className="text-sm text-gray-500">(234)</span>
+                                <span className="text-sm text-gray-500">(4.8)</span>
                               </div>
                               
                               <button className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold text-sm group-hover:gap-3 transition">
