@@ -13,7 +13,7 @@ import {
   Settings, Bell, AlertCircle, Lightbulb, Zap, Calculator, Shield, TrendingUp, Leaf
 } from 'lucide-react';
 
-export type BusinessType = 'general' | 'restaurant' | 'retail' | 'realestate' | 'cars' | 'clinic' | 'gym' | 'services' | 'laundry' | 'clothing' | 'salon' | 'pharmacy' | 'contracting' | 'plumbing' | 'painting' | 'hardware' | 'electrical' | 'construction' | 'carwash' | 'logistics' | 'agriculture' | 'admin';
+export type BusinessType = 'general' | 'restaurant' | 'retail' | 'realestate' | 'cars' | 'clinic' | 'gym' | 'services' | 'laundry' | 'clothing' | 'salon' | 'pharmacy' | 'contracting' | 'plumbing' | 'painting' | 'hardware' | 'electrical' | 'construction' | 'carwash' | 'logistics' | 'agriculture' | 'mobileLaundry' | 'admin';
 
 export interface DashboardConfig {
   type: BusinessType;
@@ -739,6 +739,38 @@ export const dashboardConfigs: Record<BusinessType, DashboardConfig> = {
       { id: 'CRP-003', col1: 'الطماطم', col2: 'إثمار', col3: '10 فدان', col4: '45%', status: 'fruiting' },
     ]
   },
+  mobileLaundry: {
+    type: 'mobileLaundry',
+    title: 'إدارة الغسيل المتنقل',
+    themeColor: 'purple',
+    navItems: [
+      { id: 'overview', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'bookings', label: 'الحجوزات', icon: Calendar },
+      { id: 'delivery', label: 'الاستلام والتسليم', icon: Truck },
+      { id: 'staff', label: 'الموظفين', icon: Users },
+      { id: 'orders', label: 'الطلبات', icon: ClipboardList },
+      { id: 'services', label: 'الخدمات', icon: Settings },
+      { id: 'invoices', label: 'الفواتير', icon: FileText },
+    ],
+    stats: [
+      { label: 'الحجوزات اليوم', value: '18', trend: 6, icon: Calendar },
+      { label: 'الموظفين', value: '6', trend: 1, icon: Users },
+      { label: 'الخدمات', value: '5', trend: 0, icon: Settings },
+      { label: 'الإيرادات', value: '1,850 ج', trend: 10, icon: DollarSign },
+    ],
+    quickActions: [
+      { label: 'حجز جديد', icon: Calendar, action: 'new_booking' },
+      { label: 'استلام', icon: Truck, action: 'new_pickup' },
+      { label: 'تسليم', icon: Truck, action: 'new_delivery' },
+      { label: 'فاتورة', icon: FileText, action: 'new_invoice' },
+    ],
+    tableHeaders: ['الحجز', 'العميل', 'الخدمة', 'الحالة', 'الموعد'],
+    data: [
+      { id: 'BK-001', col1: 'أحمد محمد', col2: 'غسيل وكي', col3: 'قيد الاستلام', col4: '10:00 صباحاً' },
+      { id: 'BK-002', col1: 'فاطمة علي', col2: 'غسيل فقط', col3: 'قيد المعالجة', col4: '02:00 مساءً' },
+      { id: 'BK-003', col1: 'محمود سالم', col2: 'كي فقط', col3: 'جاهز للتسليم', col4: '04:00 مساءً' },
+    ]
+  },
   admin: {
     type: 'admin',
     title: 'مركز التحكم الإداري',
@@ -790,4 +822,5 @@ export const colorClasses: Record<string, any> = {
   yellow: { bg: 'bg-yellow-50', text: 'text-yellow-600', border: 'border-yellow-200', btn: 'bg-yellow-600 hover:bg-yellow-700', lightBtn: 'bg-yellow-100 text-yellow-800' },
   cyan: { bg: 'bg-cyan-50', text: 'text-cyan-600', border: 'border-cyan-200', btn: 'bg-cyan-600 hover:bg-cyan-700', lightBtn: 'bg-cyan-100 text-cyan-700' },
   pink: { bg: 'bg-pink-50', text: 'text-pink-600', border: 'border-pink-200', btn: 'bg-pink-600 hover:bg-pink-700', lightBtn: 'bg-pink-100 text-pink-700' },
+  purple: { bg: 'bg-purple-50', text: 'text-purple-600', border: 'border-purple-200', btn: 'bg-purple-600 hover:bg-purple-700', lightBtn: 'bg-purple-100 text-purple-700' },
 };

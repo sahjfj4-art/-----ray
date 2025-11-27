@@ -3,9 +3,11 @@ import {
   Store, Utensils, Home, Car, Stethoscope, Dumbbell,
   Wrench, Shirt, Scissors, Pill, Briefcase,
   ArrowRight, CheckCircle, Sparkles, TrendingUp, Users, Zap,
-  BarChart3, Layers, Rocket, Globe
+  BarChart3, Layers, Rocket, Globe, Menu, X, LogOut, LayoutGrid
 } from 'lucide-react';
 import { systemsData } from '../data';
+import SystemsHeader from './SystemsHeader';
+import SystemsFooter from './SystemsFooter';
 
 interface AllSystemsShowcaseProps {
   onSystemSelect: (systemId: string) => void;
@@ -34,7 +36,12 @@ const AllSystemsShowcase: React.FC<AllSystemsShowcaseProps> = ({ onSystemSelect 
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 transition-colors">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 transition-colors flex flex-col">
+      {/* Header */}
+      <SystemsHeader onNavigateHome={() => window.location.reload()} />
+      
+      {/* Main Content */}
+      <div className="flex-1">
       
       {/* Hero Section */}
       <div className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
@@ -46,7 +53,7 @@ const AllSystemsShowcase: React.FC<AllSystemsShowcaseProps> = ({ onSystemSelect 
           </div>
           
           <h1 className="text-5xl md:text-7xl font-black mb-6 text-gray-900 dark:text-white leading-tight">
-            أكثر من <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">23 نظام</span>
+            أكثر من <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">25 نظام</span>
             <br />
             لكل أنواع الأعمال
           </h1>
@@ -236,6 +243,9 @@ const AllSystemsShowcase: React.FC<AllSystemsShowcaseProps> = ({ onSystemSelect 
           </button>
         </div>
       </div>
+      </div>
+      {/* Footer */}
+      <SystemsFooter />
     </div>
   );
 };

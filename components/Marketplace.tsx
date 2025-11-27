@@ -187,6 +187,23 @@ const Marketplace: React.FC<MarketplaceProps> = ({ onMerchantClick, onAdminLogin
      );
   }
 
+  // For system views, use separate layout without marketing header/footer
+  if (currentView === 'all-systems' || currentView === 'system-landing') {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 font-sans text-ray-black dark:text-white dir-rtl transition-colors">
+        {renderCurrentView()}
+        <GeminiAssistant context="customer" />
+        <AuthModal 
+          isOpen={isAuthOpen} 
+          onClose={() => setIsAuthOpen(false)} 
+          initialMode={authMode}
+          initialType={authType}
+          onAdminLogin={onAdminLogin}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 font-sans text-ray-black dark:text-white dir-rtl transition-colors">
       

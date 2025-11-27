@@ -2,7 +2,7 @@
 import { 
   ShoppingBag, Utensils, Home, Car, Sparkles, Stethoscope, 
   GraduationCap, Ticket, Dumbbell, Wrench, Store, ChefHat, Pill, Shirt, Droplets, Scissors, Globe,
-  Hammer, Paintbrush, Zap, Droplet, Briefcase, Users, Truck, Leaf
+  Hammer, Paintbrush, Zap, Droplet, Briefcase, Users, Truck, Leaf, Wind
 } from 'lucide-react';
 
 export interface SubCategory {
@@ -641,5 +641,27 @@ export const systemsData: Record<string, any> = {
     accent: 'text-green-600',
     bg: 'bg-green-50',
     image: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=1000&q=80'
+  },
+  mobileLaundry: {
+    id: 'mobileLaundry',
+    title: 'نظام إدارة الغسيل المتنقل',
+    description: 'نظام متخصص لخدمات الغسيل والكي المتنقلة. حجوزات، جدولة، وتتبع الخدمات.',
+    icon: Wind,
+    features: [
+      { title: 'حجز الخدمات', desc: 'تطبيق سهل لحجز خدمات الغسيل والكي من المنزل.' },
+      { title: 'جدولة الاستلام والتسليم', desc: 'نظام ذكي لتنظيم مواعيد الاستلام والتسليم.' },
+      { title: 'تتبع الطلبات', desc: 'تتبع فوري لحالة ملابسك من الاستلام للتسليم.' },
+      { title: 'إدارة الموظفين', desc: 'تنظيم فريق العمل والتوصيل بكفاءة.' }
+    ],
+    benefits: [
+      { title: 'راحة كاملة', desc: 'خدمة من المنزل توفر وقتك وجهدك.' },
+      { title: 'جودة عالية', desc: 'معايير عالية في الغسيل والكي والتعقيم.' },
+      { title: 'أسعار منافسة', desc: 'تسعير شفاف بدون رسوم إضافية.' },
+      { title: 'خدمة موثوقة', desc: 'تتبع دقيق يضمن سلامة ملابسك.' }
+    ],
+    color: 'from-indigo-600 to-purple-700',
+    accent: 'text-indigo-600',
+    bg: 'bg-indigo-50',
+    image: 'https://images.unsplash.com/photo-1582735689369-6fe89265e900?auto=format&fit=crop&w=1000&q=80'
   }
 };

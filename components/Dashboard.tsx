@@ -25,6 +25,7 @@ import ConstructionDashboard from './dashboard/construction/ConstructionDashboar
 import CarwashDashboard from './dashboard/carwash/CarwashDashboard';
 import LogisticsDashboard from './dashboard/logistics/LogisticsDashboard';
 import AgricultureDashboard from './dashboard/agriculture/AgricultureDashboard';
+import MobileLaundryDashboard from './dashboard/mobileLaundry/MobileLaundryDashboard';
 import AdminDashboard from './dashboard/admin/AdminDashboard';
 import GeneralOverview from './dashboard/views/GeneralOverview';
 
@@ -171,6 +172,8 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout, initialType, isAdmin = 
         return <LogisticsDashboard onLogout={onLogout} onSwitchType={setCurrentBusinessType} />;
       case 'agriculture':
         return <AgricultureDashboard onLogout={onLogout} onSwitchType={setCurrentBusinessType} />;
+      case 'mobileLaundry':
+        return <MobileLaundryDashboard onLogout={onLogout} onSwitchType={setCurrentBusinessType} />;
       case 'admin':
         return <AdminDashboard onLogout={onLogout} onSwitchType={setCurrentBusinessType} />;
       default:
