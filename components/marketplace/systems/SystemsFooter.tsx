@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 
 const SystemsFooter: React.FC = () => {
   const [currentYear] = useState(new Date().getFullYear());
-  const navigate = useNavigate();
 
   const handleSystemClick = (systemId: string) => {
     // Navigate to system landing page
-    navigate(`/marketplace/system/${systemId}`);
+    window.location.href = `/marketplace/system/${systemId}`;
   };
 
   const handlePageClick = (page: string) => {
     // Navigate to other pages
-    navigate(`/${page}`);
+    window.location.href = `/${page}`;
   };
 
   return (
