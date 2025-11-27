@@ -26,6 +26,7 @@ const ShoppingListing: React.FC<Props> = ({ onMerchantSelect }) => {
     setSelected({ ...item, category: 'shopping' });
     setIsBookingOpen(true);
   };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-in fade-in slide-in-from-bottom-4">
       {/* Header */}
@@ -34,16 +35,16 @@ const ShoppingListing: React.FC<Props> = ({ onMerchantSelect }) => {
           <h2 className="text-3xl font-black text-ray-black">التسوق والمحلات</h2>
           <p className="text-gray-500 mt-1">أفضل الماركات والمحلات التجارية حولك</p>
         </div>
-        
+
         <div className="flex gap-3 w-full md:w-auto">
-           <div className="relative flex-1 md:w-64">
-             <Search className="absolute right-3 top-3 w-4 h-4 text-gray-400" />
-             <input type="text" placeholder="بحث عن محل أو منتج..." className="w-full bg-white border border-gray-200 rounded-xl py-2.5 pr-10 pl-4 text-sm focus:outline-none focus:border-ray-blue" />
-           </div>
-           <button className="flex items-center gap-2 bg-white border border-gray-200 px-4 py-2.5 rounded-xl text-sm font-bold text-gray-700 hover:bg-gray-50">
-             <Filter className="w-4 h-4" />
-             فلتر
-           </button>
+          <div className="relative flex-1 md:w-64">
+            <Search className="absolute right-3 top-3 w-4 h-4 text-gray-400" />
+            <input type="text" placeholder="بحث عن محل أو منتج..." className="w-full bg-white border border-gray-200 rounded-xl py-2.5 pr-10 pl-4 text-sm focus:outline-none focus:border-ray-blue" />
+          </div>
+          <button className="flex items-center gap-2 bg-white border border-gray-200 px-4 py-2.5 rounded-xl text-sm font-bold text-gray-700 hover:bg-gray-50">
+            <Filter className="w-4 h-4" />
+            فلتر
+          </button>
         </div>
       </div>
 
@@ -59,8 +60,8 @@ const ShoppingListing: React.FC<Props> = ({ onMerchantSelect }) => {
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {shops.map((item) => (
-          <div 
-            key={item.id} 
+          <article
+            key={item.id}
             onClick={() => onMerchantSelect({ ...item, category: 'shopping' })}
             className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col"
           >
@@ -93,7 +94,7 @@ const ShoppingListing: React.FC<Props> = ({ onMerchantSelect }) => {
                 <button onClick={(e) => openBooking(e, item)} className="px-3 py-1.5 rounded-lg bg-ray-gold text-ray-blue font-bold text-sm">{t.book || 'احجز'}</button>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
       {selected && <BookingModal open={isBookingOpen} onClose={() => setIsBookingOpen(false)} listing={selected} />}
