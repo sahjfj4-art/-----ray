@@ -77,37 +77,27 @@ const ShoppingListing: React.FC<Props> = ({ onMerchantSelect }) => {
             </div>
 
             <div className="p-5 flex-1 flex flex-col">
-              <div className="flex items-center gap-2">
-                <button onClick={(e) => { e.stopPropagation(); onMerchantSelect({ ...item, category: 'shopping' }); }} className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 group-hover:bg-ray-blue group-hover:text-white transition">
-                  <ShoppingBag className="w-4 h-4" />
-                </button>
-                <button onClick={(e) => openBooking(e, item)} className="px-3 py-1.5 rounded-lg bg-ray-gold text-ray-blue font-bold text-sm">{t.book || 'احجز'}</button>
-              </div>
-
-              <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg border border-yellow-100 shrink-0 mt-3">
+              <h3 className="font-bold text-lg text-gray-900 mb-2">{item.name}</h3>
+              
+              <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg border border-yellow-100 shrink-0 mb-3 w-fit">
                 <Star className="w-3 h-3 text-yellow-500 fill-current" />
                 <span className="text-xs font-bold text-gray-800">{item.rating}</span>
               </div>
-
-              <div className="mt-4 text-sm text-gray-500 flex items-center gap-2">
+              
+              <div className="flex items-center gap-1 text-sm text-gray-500 mb-4">
                 <MapPin className="w-3.5 h-3.5" />
-                <span>{item.location}</span>
+                {item.location}
               </div>
-
+              
               <div className="mt-auto pt-4 border-t border-gray-50 flex justify-between items-center">
                 <span className="text-xs text-gray-400">{item.reviews} تقييم</span>
-                <button className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 group-hover:bg-ray-blue group-hover:text-white transition">
-                  <ShoppingBag className="w-4 h-4" />
-                </button>
+                <button onClick={(e) => openBooking(e, item)} className="px-3 py-1.5 rounded-lg bg-ray-gold text-ray-blue font-bold text-sm">{t.book || 'احجز'}</button>
               </div>
             </div>
           </article>
         ))}
       </div>
-
-      {selected && (
-        <BookingModal open={isBookingOpen} onClose={() => setIsBookingOpen(false)} listing={selected} />
-      )}
+      {selected && <BookingModal open={isBookingOpen} onClose={() => setIsBookingOpen(false)} listing={selected} />}
     </div>
   );
 };
