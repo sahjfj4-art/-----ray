@@ -1,6 +1,6 @@
 // نظام الأنشطة الموحد - تعريفات وتصنيفات
 
-export type ActivityGroup = 
+export type ActivityGroupType = 
   | 'food' 
   | 'services' 
   | 'retail' 
@@ -15,21 +15,19 @@ export interface Activity {
   nameEn: string;
   icon: string;
   color: string;
-  groupId: ActivityGroup;
+  groupId: ActivityGroupType;
   features: string[];
   dashboardComponent: string;
   listingComponent: string;
   description?: string;
 }
 
-export interface ActivityGroup {
-  id: ActivityGroup;
+export interface ActivityGroupData {
   nameAr: string;
   nameEn: string;
   icon: string;
   color: string;
   description: string;
-  activities: Activity[];
 }
 
 // ========== ACTIVITY DEFINITIONS ==========
@@ -382,13 +380,7 @@ export const ACTIVITIES: Record<string, Activity> = {
 
 // ========== ACTIVITY GROUPS ==========
 
-export const ACTIVITY_GROUPS: Record<ActivityGroup, {
-  nameAr: string;
-  nameEn: string;
-  icon: string;
-  color: string;
-  description: string;
-}> = {
+export const ACTIVITY_GROUPS: Record<ActivityGroupType, ActivityGroupData> = {
   food: {
     nameAr: 'الغذاء والمشروبات',
     nameEn: 'Food & Beverage',
@@ -447,13 +439,13 @@ export const getActivityGroup = (activityId: string) => {
   return activity ? ACTIVITY_GROUPS[activity.groupId] : null;
 };
 
-export const getActivitiesByGroup = (groupId: ActivityGroup) => {
+export const getActivitiesByGroup = (groupId: ActivityGroupType) => {
   return Object.values(ACTIVITIES).filter(a => a.groupId === groupId);
 };
 
 export const getAllActivityGroups = () => {
   return Object.entries(ACTIVITY_GROUPS).map(([id, data]) => ({
-    id: id as ActivityGroup,
+    id: id as ActivityGroupType,
     ...data,
   }));
 };

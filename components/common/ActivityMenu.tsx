@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { useTranslation, useGlobalSettings } from '../../common/GlobalSettings';
-import { ACTIVITY_GROUPS, getActivitiesByGroup, ACTIVITIES } from '../../../types/activities';
+import { useTranslation, useGlobalSettings } from './GlobalSettings';
+import { ACTIVITY_GROUPS, getActivitiesByGroup, ACTIVITIES, ActivityGroupData } from '../../types/activities';
 
 interface ActivityMenuProps {
   onActivitySelect: (activityId: string) => void;
@@ -29,7 +29,7 @@ const ActivityMenu: React.FC<ActivityMenuProps> = ({ onActivitySelect, selectedA
     setExpandedGroups(newExpanded);
   };
 
-  const filteredGroups = Object.entries(ACTIVITY_GROUPS).filter(([_, group]) => {
+  const filteredGroups = Object.entries(ACTIVITY_GROUPS).filter(([_, group]: [string, ActivityGroupData]) => {
     if (!searchQuery) return true;
     const query = searchQuery.toLowerCase();
     return (
