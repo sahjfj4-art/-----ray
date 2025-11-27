@@ -36,6 +36,23 @@ const Sidebar: React.FC<SidebarProps> = ({ config, activeTab, setActiveTab, onLo
        logistics: 'للشحن واللوجستيات',
        agriculture: 'للمزارع والزراعة',
        mobileLaundry: 'للغسيل المتنقل',
+       subscriptions: 'لإدارة الاشتراكات',
+       nursery: 'للحضانات',
+       carWash: 'لمغاسل السيارات',
+       academy: 'للأكاديميات',
+       medical: 'للمجمعات الطبية',
+       legal: 'لمكاتب المحاماة',
+       consulting: 'للشركات الاستشارية',
+       resorts: 'للمنتجعات',
+       cleaning: 'لشركات التنظيف',
+       maintenance: 'لشركات الصيانة',
+       delivery: 'لخدمات التوصيل',
+       dryCleaning: 'للدراي كلين',
+       homeServices: 'للخدمات المنزلية',
+       pos: 'لنقاط البيع',
+       inventory: 'لإدارة المخزون',
+       salesAccounting: 'للمبيعات والمحاسبة',
+       workshop: 'للورش',
        admin: 'للإدارة'
      };
      return labels[type] || 'عام';

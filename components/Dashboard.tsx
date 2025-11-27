@@ -174,6 +174,25 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout, initialType, isAdmin = 
         return <AgricultureDashboard onLogout={onLogout} onSwitchType={setCurrentBusinessType} />;
       case 'mobileLaundry':
         return <MobileLaundryDashboard onLogout={onLogout} onSwitchType={setCurrentBusinessType} />;
+      case 'subscriptions':
+      case 'nursery':
+      case 'carWash':
+      case 'academy':
+      case 'medical':
+      case 'legal':
+      case 'consulting':
+      case 'resorts':
+      case 'cleaning':
+      case 'maintenance':
+      case 'delivery':
+      case 'dryCleaning':
+      case 'homeServices':
+      case 'pos':
+      case 'inventory':
+      case 'salesAccounting':
+      case 'workshop':
+        // Use ServicesDashboard as base for new systems
+        return <ServicesDashboard onLogout={onLogout} onSwitchType={setCurrentBusinessType} type={currentBusinessType} />;
       case 'admin':
         return <AdminDashboard onLogout={onLogout} onSwitchType={setCurrentBusinessType} />;
       default:

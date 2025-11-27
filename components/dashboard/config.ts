@@ -10,10 +10,11 @@ import {
   Syringe, Pill, School, GraduationCap, Video,
   Shirt, Droplets, Waves, Scissors, Ticket, Layers,
   Sparkles, Grid, LayoutGrid, BarChart3, HardHat, Warehouse, FileSpreadsheet,
-  Settings, Bell, AlertCircle, Lightbulb, Zap, Calculator, Shield, TrendingUp, Leaf
+  Settings, Bell, AlertCircle, Lightbulb, Zap, Calculator, Shield, TrendingUp, Leaf,
+  Trophy, Baby, RefreshCw, XCircle, Heart, Database
 } from 'lucide-react';
 
-export type BusinessType = 'general' | 'restaurant' | 'retail' | 'realestate' | 'cars' | 'clinic' | 'gym' | 'services' | 'laundry' | 'clothing' | 'salon' | 'pharmacy' | 'contracting' | 'plumbing' | 'painting' | 'hardware' | 'electrical' | 'construction' | 'carwash' | 'logistics' | 'agriculture' | 'mobileLaundry' | 'admin';
+export type BusinessType = 'general' | 'restaurant' | 'retail' | 'realestate' | 'cars' | 'clinic' | 'gym' | 'services' | 'laundry' | 'clothing' | 'salon' | 'pharmacy' | 'contracting' | 'plumbing' | 'painting' | 'hardware' | 'electrical' | 'construction' | 'carwash' | 'logistics' | 'agriculture' | 'mobileLaundry' | 'subscriptions' | 'nursery' | 'academy' | 'medical' | 'legal' | 'consulting' | 'resorts' | 'cleaning' | 'maintenance' | 'delivery' | 'dryCleaning' | 'homeServices' | 'pos' | 'inventory' | 'salesAccounting' | 'workshop' | 'admin';
 
 export interface DashboardConfig {
   type: BusinessType;
@@ -808,6 +809,554 @@ export const dashboardConfigs: Record<BusinessType, DashboardConfig> = {
       { id: 'LOG-001', col1: 'security', col2: 'success', col3: 'أحمد محمد', col4: '10:30', col5: 'عرض' },
       { id: 'LOG-002', col1: 'data', col2: 'success', col3: 'سارة أحمد', col4: '09:15', col5: 'عرض' },
       { id: 'LOG-003', col1: 'system', col2: 'info', col3: 'النظام', col4: '08:00', col5: 'عرض' },
+    ]
+  },
+  
+  // أنظمة الحجوزات الإضافية
+  subscriptions: {
+    type: 'subscriptions',
+    title: 'لوحة تحكم إدارة الاشتراكات',
+    themeColor: 'purple',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'subscriptions', label: 'الاشتراكات', icon: Calendar },
+      { id: 'customers', label: 'العملاء', icon: Users },
+      { id: 'billing', label: 'الفواتير', icon: FileText },
+      { id: 'reports', label: 'التقارير', icon: BarChart3 },
+      { id: 'settings', label: 'الإعدادات', icon: Settings },
+    ],
+    stats: [
+      { label: 'إجمالي الاشتراكات', value: '1,234', trend: 12.5, icon: Users },
+      { label: 'الإيرادات الشهرية', value: '45,678 ج.م', trend: 8.2, icon: DollarSign },
+      { label: 'تجديدات اليوم', value: '89', trend: 15.3, icon: RefreshCw },
+      { label: 'الإلغاءات', value: '12', trend: -3.1, icon: XCircle },
+    ],
+    quickActions: [
+      { label: 'اشتراك جديد', icon: Plus, action: 'new_subscription' },
+      { label: 'تجديد اشتراك', icon: RefreshCw, action: 'renew_subscription' },
+      { label: 'إرسال فواتير', icon: FileText, action: 'send_invoices' },
+      { label: 'تقارير الإيرادات', icon: BarChart3, action: 'revenue_reports' },
+    ],
+    tableHeaders: ['المعرف', 'العميل', 'النوع', 'الحالة', 'التجديد التالي', 'الإجراءات'],
+    data: [
+      { id: 'SUB-001', col1: 'أحمد محمد', col2: 'شهري', col3: 'نشط', col4: '2024-12-01', col5: 'عرض' },
+      { id: 'SUB-002', col1: 'سارة أحمد', col2: 'سنوي', col3: 'نشط', col4: '2025-06-01', col5: 'عرض' },
+      { id: 'SUB-003', col1: 'محمد علي', col2: 'شهري', col3: 'منتهي', col4: '2024-10-15', col5: 'عرض' },
+    ]
+  },
+  
+  nursery: {
+    type: 'nursery',
+    title: 'لوحة تحكم الحضانة',
+    themeColor: 'pink',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'children', label: 'الأطفال', icon: Baby },
+      { id: 'attendance', label: 'الحضور', icon: CheckCircle },
+      { id: 'activities', label: 'الأنشطة', icon: Activity },
+      { id: 'parents', label: 'الأهل', icon: Users },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+    ],
+    stats: [
+      { label: 'إجمالي الأطفال', value: '89', trend: 5.2, icon: Baby },
+      { label: 'الحضور اليوم', value: '76', trend: 2.1, icon: CheckCircle },
+      { label: 'الأنشطة هذا الأسبوع', value: '12', trend: 8.7, icon: Activity },
+      { label: 'المعلمون', value: '15', trend: 0, icon: Users },
+    ],
+    quickActions: [
+      { label: 'تسجيل طفل جديد', icon: Plus, action: 'add_child' },
+      { label: 'تسجيل الحضور', icon: CheckCircle, action: 'mark_attendance' },
+      { label: 'جدولة نشاط', icon: Calendar, action: 'schedule_activity' },
+      { label: 'إبلاغ الأهل', icon: Bell, action: 'notify_parents' },
+    ],
+    tableHeaders: ['اسم الطفل', 'العمر', 'الحالة', 'الحضور', 'ولي الأمر', 'الإجراءات'],
+    data: [
+      { id: 'CH-001', col1: 'أحمد محمد', col2: '4 سنوات', col3: 'نشط', col4: 'حاضر', col5: 'الأب', col6: 'عرض' },
+      { id: 'CH-002', col1: 'مريم أحمد', col2: '3 سنوات', col3: 'نشط', col4: 'حاضر', col5: 'الأم', col6: 'عرض' },
+      { id: 'CH-003', col1: 'علي خالد', col2: '5 سنوات', col3: 'نشط', col4: 'غائب', col5: 'الأب', col6: 'عرض' },
+    ]
+  },
+  
+  carWash: {
+    type: 'carWash',
+    title: 'لوحة تحكم مغسلة السيارات',
+    themeColor: 'blue',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'bookings', label: 'الحجوزات', icon: Calendar },
+      { id: 'services', label: 'الخدمات', icon: Car },
+      { id: 'customers', label: 'العملاء', icon: Users },
+      { id: 'employees', label: 'الموظفون', icon: Users },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+    ],
+    stats: [
+      { label: 'الحجوزات اليوم', value: '45', trend: 12.3, icon: Calendar },
+      { label: 'الإيرادات اليوم', value: '2,340 ج.م', trend: 8.7, icon: DollarSign },
+      { label: 'الخدمات المنجزة', value: '38', trend: 5.2, icon: CheckCircle },
+      { label: 'العملاء الجدد', value: '7', trend: 15.8, icon: Users },
+    ],
+    quickActions: [
+      { label: 'حجز جديد', icon: Plus, action: 'new_booking' },
+      { label: 'بدء خدمة', icon: Car, action: 'start_service' },
+      { label: 'إضافة عميل', icon: Users, action: 'add_customer' },
+      { label: 'تقرير اليوم', icon: FileText, action: 'daily_report' },
+    ],
+    tableHeaders: ['المعرف', 'العميل', 'السيارة', 'الخدمة', 'الحالة', 'الوقت', 'الإجراءات'],
+    data: [
+      { id: 'BW-001', col1: 'أحمد محمد', col2: 'بيجو 208', col3: 'غسيل كامل', col4: 'قيد التنفيذ', col5: '10:30', col6: 'عرض' },
+      { id: 'BW-002', col1: 'سارة أحمد', col2: 'تويوتا يارس', col3: 'تنظيف داخلي', col4: 'مكتمل', col5: '09:15', col6: 'عرض' },
+      { id: 'BW-003', col1: 'محمد علي', col2: 'هيونداي إلنترا', col3: 'واكس', col4: 'في الانتظار', col5: '11:00', col6: 'عرض' },
+    ]
+  },
+  
+  academy: {
+    type: 'academy',
+    title: 'لوحة تحكم الأكاديمية',
+    themeColor: 'orange',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'members', label: 'الأعضاء', icon: Users },
+      { id: 'trainers', label: 'المدربون', icon: Dumbbell },
+      { id: 'schedule', label: 'الجدول', icon: Calendar },
+      { id: 'competitions', label: 'المسابقات', icon: Trophy },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+    ],
+    stats: [
+      { label: 'إجمالي الأعضاء', value: '234', trend: 8.4, icon: Users },
+      { label: 'المدربون', value: '12', trend: 0, icon: Dumbbell },
+      { label: 'حصص اليوم', value: '18', trend: 3.2, icon: Calendar },
+      { label: 'المسابقات النشطة', value: '3', trend: 50.0, icon: Trophy },
+    ],
+    quickActions: [
+      { label: 'تسجيل عضو جديد', icon: Plus, action: 'new_member' },
+      { label: 'جدولة حصة', icon: Calendar, action: 'schedule_session' },
+      { label: 'إنشاء مسابقة', icon: Trophy, action: 'create_competition' },
+      { label: 'تقرير التقدم', icon: FileText, action: 'progress_report' },
+    ],
+    tableHeaders: ['العضو', 'النوع', 'المدرب', 'الحصة', 'الوقت', 'الحالة', 'الإجراءات'],
+    data: [
+      { id: 'MB-001', col1: 'أحمد محمد', col2: 'عضوية ذهبية', col3: 'خالد أحمد', col4: 'كرة قدم', col5: '16:00', col6: 'حاضر', col7: 'عرض' },
+      { id: 'MB-002', col1: 'سارة أحمد', col2: 'عضوية فضية', col3: 'مريم علي', col4: 'يوغا', col5: '17:00', col6: 'حاضر', col7: 'عرض' },
+      { id: 'MB-003', col1: 'محمد علي', col3: 'عضوية برونزية', col4: 'كمال أجسام', col5: '18:00', col6: 'غائب', col7: 'عرض' },
+    ]
+  },
+  
+  medical: {
+    type: 'medical',
+    title: 'لوحة تحكم المجمع الطبي',
+    themeColor: 'red',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'doctors', label: 'الأطباء', icon: Stethoscope },
+      { id: 'patients', label: 'المرضى', icon: Heart },
+      { id: 'appointments', label: 'المواعيد', icon: Calendar },
+      { id: 'pharmacy', label: 'الصيدلية', icon: Pill },
+      { id: 'records', label: 'السجلات', icon: FileText },
+    ],
+    stats: [
+      { label: 'الأطباء', value: '45', trend: 2.1, icon: Stethoscope },
+      { label: 'المواعيد اليوم', value: '128', trend: 5.7, icon: Calendar },
+      { label: 'المرضى النشطين', value: '3,456', trend: 8.3, icon: Heart },
+      { label: 'الأدوية في المخزون', value: '892', trend: -2.4, icon: Pill },
+    ],
+    quickActions: [
+      { label: 'موعد جديد', icon: Plus, action: 'new_appointment' },
+      { label: 'تسجيل مريض', icon: Heart, action: 'register_patient' },
+      { label: 'صرف دواء', icon: Pill, action: 'dispense_medication' },
+      { label: 'تقرير طبي', icon: FileText, action: 'medical_report' },
+    ],
+    tableHeaders: ['المريض', 'الطبيب', 'العيادة', 'الموعد', 'الحالة', 'الإجراءات'],
+    data: [
+      { id: 'PT-001', col1: 'أحمد محمد', col2: 'د. خالد أحمد', col3: 'باطنة', col4: '10:30', col5: 'في الانتظار', col6: 'عرض' },
+      { id: 'PT-002', col1: 'سارة أحمد', col2: 'د. مريم علي', col3: 'جلدية', col4: '11:00', col5: 'مكتمل', col6: 'عرض' },
+      { id: 'PT-003', col1: 'محمد علي', col2: 'د. علي خالد', col3: 'عظام', col4: '14:00', col5: 'حجز', col6: 'عرض' },
+    ]
+  },
+  
+  legal: {
+    type: 'legal',
+    title: 'لوحة تحكم مكتب محاماة',
+    themeColor: 'gray',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'cases', label: 'القضايا', icon: FileText },
+      { id: 'clients', label: 'العملاء', icon: Users },
+      { id: 'hearings', label: 'الجلسات', icon: Calendar },
+      { id: 'documents', label: 'الوثائق', icon: FileText },
+      { id: 'billing', label: 'الفواتير', icon: DollarSign },
+    ],
+    stats: [
+      { label: 'القضايا النشطة', value: '67', trend: 4.2, icon: FileText },
+      { label: 'العملاء', value: '234', trend: 7.8, icon: Users },
+      { label: 'الجلسات هذا الشهر', value: '28', trend: 12.5, icon: Calendar },
+      { label: 'الإيرادات الشهرية', value: '89,456 ج.م', trend: 9.3, icon: DollarSign },
+    ],
+    quickActions: [
+      { label: 'قضية جديدة', icon: Plus, action: 'new_case' },
+      { label: 'جدولة جلسة', icon: Calendar, action: 'schedule_hearing' },
+      { label: 'إعداد عقد', icon: FileText, action: 'prepare_contract' },
+      { label: 'فاتورة جديدة', icon: DollarSign, action: 'new_invoice' },
+    ],
+    tableHeaders: ['رقم القضية', 'العميل', 'النوع', 'المحامي', 'الحالة', 'الجلسة التالية', 'الإجراءات'],
+    data: [
+      { id: 'CS-001', col1: 'أحمد محمد', col2: 'مدني', col3: 'خالد أحمد', col4: 'نشط', col5: '2024-11-15', col6: 'عرض' },
+      { id: 'CS-002', col1: 'سارة أحمد', col2: 'تجاري', col3: 'مريم علي', col4: 'نشط', col5: '2024-11-20', col6: 'عرض' },
+      { id: 'CS-003', col1: 'محمد علي', col3: 'جنائي', col4: 'علي خالد', col5: 'مكتمل', col6: '2024-10-30', col7: 'عرض' },
+    ]
+  },
+  
+  consulting: {
+    type: 'consulting',
+    title: 'لوحة تحكم شركة استشارية',
+    themeColor: 'indigo',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'projects', label: 'المشاريع', icon: Briefcase },
+      { id: 'clients', label: 'العملاء', icon: Users },
+      { id: 'team', label: 'الفريق', icon: Users },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+      { id: 'billing', label: 'الفواتير', icon: DollarSign },
+    ],
+    stats: [
+      { label: 'المشاريع النشطة', value: '23', trend: 6.7, icon: Briefcase },
+      { label: 'العملاء', value: '89', trend: 4.2, icon: Users },
+      { label: 'أعضاء الفريق', value: '34', trend: 8.9, icon: Users },
+      { label: 'الإيرادات الشهرية', value: '234,567 ج.م', trend: 12.4, icon: DollarSign },
+    ],
+    quickActions: [
+      { label: 'مشروع جديد', icon: Plus, action: 'new_project' },
+      { label: 'تقرير المشروع', icon: FileText, action: 'project_report' },
+      { label: 'فاتورة جديدة', icon: DollarSign, action: 'new_invoice' },
+      { label: 'اجتماع فريق', icon: Users, action: 'team_meeting' },
+    ],
+    tableHeaders: ['المشروع', 'العميل', 'الفريق', 'الحالة', 'التسليم', 'الإجراءات'],
+    data: [
+      { id: 'PRJ-001', col1: 'أحمد محمد', col2: 'فريق A', col3: 'قيد التنفيذ', col4: '2024-12-15', col5: 'عرض' },
+      { id: 'PRJ-002', col1: 'سارة أحمد', col2: 'فريق B', col3: 'قيد التنفيذ', col4: '2024-11-30', col5: 'عرض' },
+      { id: 'PRJ-003', col1: 'محمد علي', col3: 'فريق C', col4: 'مكتمل', col5: '2024-10-20', col6: 'عرض' },
+    ]
+  },
+  
+  resorts: {
+    type: 'resorts',
+    title: 'لوحة تحكم المنتجع',
+    themeColor: 'teal',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'units', label: 'الوحدات', icon: Home },
+      { id: 'bookings', label: 'الحجوزات', icon: Calendar },
+      { id: 'guests', label: 'النزلاء', icon: Users },
+      { id: 'services', label: 'الخدمات', icon: Sparkles },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+    ],
+    stats: [
+      { label: 'الوحدات الإجمالية', value: '45', trend: 0, icon: Home },
+      { label: 'الوحدات المحجوزة', value: '38', trend: 5.2, icon: Calendar },
+      { label: 'النزلاء الحاليين', value: '89', trend: 8.7, icon: Users },
+      { label: 'الإشغال', value: '84%', trend: 2.1, icon: TrendingUp },
+    ],
+    quickActions: [
+      { label: 'حجز جديد', icon: Plus, action: 'new_booking' },
+      { label: 'تسجيل نزيل', icon: Users, action: 'check_in_guest' },
+      { label: 'تنظيف وحدة', icon: Sparkles, action: 'clean_unit' },
+      { label: 'تقرير الإشغال', icon: FileText, action: 'occupancy_report' },
+    ],
+    tableHeaders: ['الوحدة', 'النوع', 'النزيل', 'الحالة', 'المدة', 'الإجراءات'],
+    data: [
+      { id: 'UNT-001', col1: 'جناح فاخر', col2: 'أحمد محمد', col3: 'محجوز', col4: '3 أيام', col5: 'عرض' },
+      { id: 'UNT-002', col1: 'غرفة مزدوجة', col2: 'سارة أحمد', col3: 'محجوز', col4: '2 أيام', col5: 'عرض' },
+      { id: 'UNT-003', col1: 'شاليه', col3: 'متاح', col4: '-', col5: 'عرض' },
+    ]
+  },
+  
+  // أنظمة الخدمات الإضافية
+  cleaning: {
+    type: 'cleaning',
+    title: 'لوحة تحكم شركة تنظيف',
+    themeColor: 'green',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'teams', label: 'الفرق', icon: Users },
+      { id: 'bookings', label: 'الحجوزات', icon: Calendar },
+      { id: 'customers', label: 'العملاء', icon: Users },
+      { id: 'materials', label: 'المواد', icon: Package },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+    ],
+    stats: [
+      { label: 'الفرق النشطة', value: '12', trend: 3.2, icon: Users },
+      { label: 'الحجوزات اليوم', value: '28', trend: 7.8, icon: Calendar },
+      { label: 'العملاء', value: '156', trend: 5.4, icon: Users },
+      { label: 'رضا العملاء', value: '4.8/5', trend: 0.1, icon: Star },
+    ],
+    quickActions: [
+      { label: 'حجز جديد', icon: Plus, action: 'new_booking' },
+      { label: 'توزيع فريق', icon: Users, action: 'assign_team' },
+      { label: 'طلب مواد', icon: Package, action: 'request_materials' },
+      { label: 'تقرير الجودة', icon: FileText, action: 'quality_report' },
+    ],
+    tableHeaders: ['الحجز', 'العميل', 'الفريق', 'الخدمة', 'الحالة', 'الوقت', 'الإجراءات'],
+    data: [
+      { id: 'BK-001', col1: 'أحمد محمد', col2: 'فريق A', col3: 'تنظيف كامل', col4: 'قيد التنفيذ', col5: '10:30', col6: 'عرض' },
+      { id: 'BK-002', col1: 'سارة أحمد', col2: 'فريق B', col3: 'تنظيف نوافذ', col4: 'مكتمل', col5: '09:15', col6: 'عرض' },
+      { id: 'BK-003', col1: 'محمد علي', col3: 'فريق C', col4: 'تنظيف سجاد', col5: 'في الانتظار', col6: '11:00', col7: 'عرض' },
+    ]
+  },
+  
+  maintenance: {
+    type: 'maintenance',
+    title: 'لوحة تحكم شركة صيانة',
+    themeColor: 'orange',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'technicians', label: 'الفنيون', icon: Wrench },
+      { id: 'jobs', label: 'الأعمال', icon: Briefcase },
+      { id: 'parts', label: 'القطع الغيار', icon: Package },
+      { id: 'customers', label: 'العملاء', icon: Users },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+    ],
+    stats: [
+      { label: 'الفنيون', value: '18', trend: 2.1, icon: Wrench },
+      { label: 'الأعمال اليوم', value: '34', trend: 8.7, icon: Briefcase },
+      { label: 'القطع الغيار', value: '456', trend: -3.2, icon: Package },
+      { label: 'العملاء', value: '234', trend: 5.4, icon: Users },
+    ],
+    quickActions: [
+      { label: 'عمل جديد', icon: Plus, action: 'new_job' },
+      { label: 'توزيع فني', icon: Wrench, action: 'assign_technician' },
+      { label: 'طلب قطعة', icon: Package, action: 'request_part' },
+      { label: 'تقرير الصيانة', icon: FileText, action: 'maintenance_report' },
+    ],
+    tableHeaders: ['العمل', 'العميل', 'الفني', 'الحالة', 'القطع', 'الوقت', 'الإجراءات'],
+    data: [
+      { id: 'JB-001', col1: 'أحمد محمد', col2: 'خالد أحمد', col3: 'قيد التنفيذ', col4: 'مروحة', col5: '10:30', col6: 'عرض' },
+      { id: 'JB-002', col1: 'سارة أحمد', col2: 'مريم علي', col3: 'مكتمل', col4: 'مكيف', col5: '09:15', col6: 'عرض' },
+      { id: 'JB-003', col1: 'محمد علي', col3: 'علي خالد', col4: 'في الانتظار', col5: 'ثلاجة', col6: '11:00', col7: 'عرض' },
+    ]
+  },
+  
+  delivery: {
+    type: 'delivery',
+    title: 'لوحة تحكم خدمة توصيل',
+    themeColor: 'blue',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'orders', label: 'الطلبات', icon: Package },
+      { id: 'drivers', label: 'المندوبون', icon: Truck },
+      { id: 'routes', label: 'المسارات', icon: Map },
+      { id: 'customers', label: 'العملاء', icon: Users },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+    ],
+    stats: [
+      { label: 'الطلبات اليوم', value: '156', trend: 12.4, icon: Package },
+      { label: 'المندوبون', value: '23', trend: 4.2, icon: Truck },
+      { label: 'التوصيلات المكتملة', value: '134', trend: 8.7, icon: CheckCircle },
+      { label: 'متوسط وقت التوصيل', value: '35 دقيقة', trend: -5.2, icon: Clock },
+    ],
+    quickActions: [
+      { label: 'طلب جديد', icon: Plus, action: 'new_order' },
+      { label: 'توزيع مندوب', icon: Truck, action: 'assign_driver' },
+      { label: 'تحسين مسار', icon: Map, action: 'optimize_route' },
+      { label: 'تتبع الطلبات', icon: Package, action: 'track_orders' },
+    ],
+    tableHeaders: ['الطلب', 'العميل', 'المندوب', 'الحالة', 'العنوان', 'الوقت', 'الإجراءات'],
+    data: [
+      { id: 'ORD-001', col1: 'أحمد محمد', col2: 'خالد أحمد', col3: 'قيد التوصيل', col4: 'القاهرة', col5: '10:30', col6: 'عرض' },
+      { id: 'ORD-002', col1: 'سارة أحمد', col2: 'مريم علي', col3: 'مكتمل', col4: 'الجيزة', col5: '09:15', col6: 'عرض' },
+      { id: 'ORD-003', col1: 'محمد علي', col3: 'علي خالد', col4: 'في الانتظار', col5: 'الإسكندرية', col6: '11:00', col7: 'عرض' },
+    ]
+  },
+  
+  dryCleaning: {
+    type: 'dryCleaning',
+    title: 'لوحة تحكم دراي كلين',
+    themeColor: 'cyan',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'orders', label: 'الطلبات', icon: Package },
+      { id: 'items', label: 'الملابس', icon: Shirt },
+      { id: 'services', label: 'الخدمات', icon: Droplets },
+      { id: 'customers', label: 'العملاء', icon: Users },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+    ],
+    stats: [
+      { label: 'الطلبات اليوم', value: '89', trend: 7.8, icon: Package },
+      { label: 'الملابس قيد المعالجة', value: '234', trend: 5.2, icon: Shirt },
+      { label: 'الخدمات المنجزة', value: '156', trend: 8.9, icon: CheckCircle },
+      { label: 'العملاء', value: '456', trend: 3.4, icon: Users },
+    ],
+    quickActions: [
+      { label: 'استلام ملابس', icon: Plus, action: 'receive_items' },
+      { label: 'بدء معالجة', icon: Droplets, action: 'start_processing' },
+      { label: 'تسليم', icon: Package, action: 'deliver_items' },
+      { label: 'تقرير الجودة', icon: FileText, action: 'quality_report' },
+    ],
+    tableHeaders: ['الطلب', 'العميل', 'الخدمة', 'الملابس', 'الحالة', 'التسليم', 'الإجراءات'],
+    data: [
+      { id: 'DRY-001', col1: 'أحمد محمد', col2: 'غسيل جاف', col3: '5 قطع', col4: 'قيد المعالجة', col5: 'غداً', col6: 'عرض' },
+      { id: 'DRY-002', col1: 'سارة أحمد', col2: 'كي', col3: '3 قطع', col4: 'مكتمل', col5: 'اليوم', col6: 'عرض' },
+      { id: 'DRY-003', col1: 'محمد علي', col3: 'غسيل وكي', col4: '8 قطع', col5: 'في الانتظار', col6: 'بعد غد', col7: 'عرض' },
+    ]
+  },
+  
+  homeServices: {
+    type: 'homeServices',
+    title: 'لوحة تحكم الخدمات المنزلية',
+    themeColor: 'green',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'technicians', label: 'الفنيون', icon: Wrench },
+      { id: 'services', label: 'الخدمات', icon: Home },
+      { id: 'bookings', label: 'الحجوزات', icon: Calendar },
+      { id: 'customers', label: 'العملاء', icon: Users },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+    ],
+    stats: [
+      { label: 'الفنيون', value: '34', trend: 5.2, icon: Wrench },
+      { label: 'الحجوزات اليوم', value: '67', trend: 8.7, icon: Calendar },
+      { label: 'الخدمات المتاحة', value: '12', trend: 0, icon: Home },
+      { label: 'العملاء', value: '234', trend: 6.4, icon: Users },
+    ],
+    quickActions: [
+      { label: 'حجز خدمة', icon: Plus, action: 'book_service' },
+      { label: 'توزيع فني', icon: Wrench, action: 'assign_technician' },
+      { label: 'إضافة خدمة', icon: Home, action: 'add_service' },
+      { label: 'تقرير الخدمة', icon: FileText, action: 'service_report' },
+    ],
+    tableHeaders: ['الحجز', 'العميل', 'الخدمة', 'الفني', 'الحالة', 'الوقت', 'الإجراءات'],
+    data: [
+      { id: 'HS-001', col1: 'أحمد محمد', col2: 'سباكة', col3: 'خالد أحمد', col4: 'قيد التنفيذ', col5: '10:30', col6: 'عرض' },
+      { id: 'HS-002', col1: 'سارة أحمد', col2: 'كهرباء', col3: 'مريم علي', col4: 'مكتمل', col5: '09:15', col6: 'عرض' },
+      { id: 'HS-003', col1: 'محمد علي', col3: 'تكييف', col4: 'علي خالد', col5: 'في الانتظار', col6: '11:00', col7: 'عرض' },
+    ]
+  },
+  
+  // أنظمة المبيعات الإضافية
+  pos: {
+    type: 'pos',
+    title: 'لوحة تحكم نقاط البيع',
+    themeColor: 'purple',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'sales', label: 'المبيعات', icon: ShoppingCart },
+      { id: 'products', label: 'المنتجات', icon: Package },
+      { id: 'inventory', label: 'المخزون', icon: Database },
+      { id: 'customers', label: 'العملاء', icon: Users },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+    ],
+    stats: [
+      { label: 'المبيعات اليوم', value: '12,345 ج.م', trend: 8.7, icon: ShoppingCart },
+      { label: 'عدد الفواتير', value: '89', trend: 5.2, icon: FileText },
+      { label: 'المنتجات', value: '456', trend: 2.1, icon: Package },
+      { label: 'العملاء', value: '234', trend: 4.3, icon: Users },
+    ],
+    quickActions: [
+      { label: 'بيع جديد', icon: ShoppingCart, action: 'new_sale' },
+      { label: 'إضافة منتج', icon: Package, action: 'add_product' },
+      { label: 'جرد المخزون', icon: Database, action: 'inventory_count' },
+      { label: 'تقرير المبيعات', icon: FileText, action: 'sales_report' },
+    ],
+    tableHeaders: ['الفاتورة', 'العميل', 'المنتجات', 'الإجمالي', 'الوقت', 'الإجراءات'],
+    data: [
+      { id: 'INV-001', col1: 'أحمد محمد', col2: '5 منتجات', col3: '234 ج.م', col4: '10:30', col5: 'عرض' },
+      { id: 'INV-002', col1: 'سارة أحمد', col2: '3 منتجات', col3: '156 ج.م', col4: '09:15', col5: 'عرض' },
+      { id: 'INV-003', col1: 'محمد علي', col3: '8 منتجات', col4: '445 ج.م', col5: '11:00', col6: 'عرض' },
+    ]
+  },
+  
+  inventory: {
+    type: 'inventory',
+    title: 'لوحة تحكم المخزون',
+    themeColor: 'blue',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'products', label: 'المنتجات', icon: Package },
+      { id: 'stock', label: 'المخزون', icon: Database },
+      { id: 'suppliers', label: 'الموردون', icon: Truck },
+      { id: 'alerts', label: 'التنبيهات', icon: Bell },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+    ],
+    stats: [
+      { label: 'المنتجات', value: '1,234', trend: 3.2, icon: Package },
+      { label: 'المخزون المنخفض', value: '23', trend: -5.4, icon: AlertCircle },
+      { label: 'الموردون', value: '45', trend: 2.1, icon: Truck },
+      { label: 'قيمة المخزون', value: '234,567 ج.م', trend: 8.7, icon: DollarSign },
+    ],
+    quickActions: [
+      { label: 'إضافة منتج', icon: Plus, action: 'add_product' },
+      { label: 'طلب شراء', icon: Truck, action: 'purchase_order' },
+      { label: 'جرد سريع', icon: Database, action: 'quick_count' },
+      { label: 'تقرير المخزون', icon: FileText, action: 'inventory_report' },
+    ],
+    tableHeaders: ['المنتج', 'الرمز', 'المخزون', 'الحد الأدنى', 'الحالة', 'الآخر تعديل', 'الإجراءات'],
+    data: [
+      { id: 'PRD-001', col1: 'منتج A', col2: 'SKU-001', col3: '45', col4: '10', col5: 'متوفر', col6: '2024-11-10', col7: 'عرض' },
+      { id: 'PRD-002', col1: 'منتج B', col2: 'SKU-002', col3: '8', col4: '10', col5: 'منخفض', col6: '2024-11-11', col7: 'عرض' },
+      { id: 'PRD-003', col1: 'منتج C', col3: 'SKU-003', col4: '0', col5: 'نافد', col6: '2024-11-12', col7: 'عرض' },
+    ]
+  },
+  
+  salesAccounting: {
+    type: 'salesAccounting',
+    title: 'لوحة تحكم المبيعات والمحاسبة',
+    themeColor: 'green',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'sales', label: 'المبيعات', icon: ShoppingCart },
+      { id: 'invoices', label: 'الفواتير', icon: FileText },
+      { id: 'debts', label: 'الديون', icon: DollarSign },
+      { id: 'accounts', label: 'الحسابات', icon: CreditCard },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+    ],
+    stats: [
+      { label: 'المبيعات الشهرية', value: '234,567 ج.م', trend: 12.4, icon: ShoppingCart },
+      { label: 'الديون المستحقة', value: '45,678 ج.م', trend: -3.2, icon: DollarSign },
+      { label: 'الفواتير غير المدفوعة', value: '23', trend: -8.7, icon: FileText },
+      { label: 'صافي الربح', value: '67,890 ج.م', trend: 5.6, icon: TrendingUp },
+    ],
+    quickActions: [
+      { label: 'فاتورة جديدة', icon: FileText, action: 'new_invoice' },
+      { label: 'تسجيل دفعة', icon: CreditCard, action: 'record_payment' },
+      { label: 'متابعة دين', icon: DollarSign, action: 'follow_debt' },
+      { label: 'تقرير مالي', icon: FileText, action: 'financial_report' },
+    ],
+    tableHeaders: ['العميل', 'المبلغ', 'تاريخ الاستحقاق', 'الحالة', 'آخر متابعة', 'الإجراءات'],
+    data: [
+      { id: 'DBT-001', col1: 'أحمد محمد', col2: '2,340 ج.م', col3: '2024-11-15', col4: 'متأخر', col5: '2024-11-10', col6: 'عرض' },
+      { id: 'DBT-002', col1: 'سارة أحمد', col2: '1,567 ج.م', col3: '2024-11-20', col4: 'قريب', col5: '2024-11-12', col7: 'عرض' },
+      { id: 'DBT-003', col1: 'محمد علي', col3: '3,456 ج.م', col4: 'مسدد', col5: '2024-11-08', col6: 'عرض' },
+    ]
+  },
+  
+  // أنظمة المهن الإضافية
+  workshop: {
+    type: 'workshop',
+    title: 'لوحة تحكم الورشة',
+    themeColor: 'gray',
+    navItems: [
+      { id: 'dashboard', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'production', label: 'الإنتاج', icon: Package },
+      { id: 'materials', label: 'المواد الخام', icon: Package },
+      { id: 'employees', label: 'الموظفون', icon: Users },
+      { id: 'quality', label: 'الجودة', icon: Shield },
+      { id: 'reports', label: 'التقارير', icon: FileText },
+    ],
+    stats: [
+      { label: 'الإنتاج اليوم', value: '234 وحدة', trend: 8.7, icon: Package },
+      { label: 'المواد الخام', value: '456 طن', trend: -2.1, icon: Package },
+      { label: 'الموظفون', value: '67', trend: 3.4, icon: Users },
+      { label: 'معدل الجودة', value: '98.5%', trend: 0.2, icon: Shield },
+    ],
+    quickActions: [
+      { label: 'بدء إنتاج', icon: Package, action: 'start_production' },
+      { label: 'طلب مواد', icon: Package, action: 'request_materials' },
+      { label: 'فحص جودة', icon: Shield, action: 'quality_check' },
+      { label: 'تقرير الإنتاج', icon: FileText, action: 'production_report' },
+    ],
+    tableHeaders: ['المنتج', 'الكمية', 'الحالة', 'الجودة', 'الموظف', 'الوقت', 'الإجراءات'],
+    data: [
+      { id: 'PRD-001', col1: 'منتج A', col2: '100 وحدة', col3: 'قيد الإنتاج', col4: 'جيد', col5: 'أحمد محمد', col6: '10:30', col7: 'عرض' },
+      { id: 'PRD-002', col1: 'منتج B', col2: '50 وحدة', col3: 'مكتمل', col4: 'ممتاز', col5: 'سارة أحمد', col6: '09:15', col7: 'عرض' },
+      { id: 'PRD-003', col1: 'منتج C', col3: '75 وحدة', col4: 'في الانتظار', col5: 'محمد علي', col6: '11:00', col7: 'عرض' },
     ]
   }
 };

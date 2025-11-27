@@ -99,6 +99,23 @@ const Header: React.FC<HeaderProps> = ({
              <option value="logistics">🚚 اللوجستيات</option>
              <option value="agriculture">🌾 الزراعة</option>
              <option value="mobileLaundry">🌬️ الغسيل المتنقل</option>
+             <option value="subscriptions">📅 الاشتراكات</option>
+             <option value="nursery">👶 الحضانات</option>
+             <option value="carWash">🚗 مغاسل السيارات</option>
+             <option value="academy">🏋️ الأكاديميات</option>
+             <option value="medical">🏥 المجمعات الطبية</option>
+             <option value="legal">⚖️ المحاماة</option>
+             <option value="consulting">💼 الاستشارات</option>
+             <option value="resorts">🏨 المنتجعات</option>
+             <option value="cleaning">✨ التنظيف</option>
+             <option value="maintenance">🔧 الصيانة</option>
+             <option value="delivery">🚚 التوصيل</option>
+             <option value="dryCleaning">👔 الدراي كلين</option>
+             <option value="homeServices">🏠 الخدمات المنزلية</option>
+             <option value="pos">💳 نقاط البيع</option>
+             <option value="inventory">📦 المخزون</option>
+             <option value="salesAccounting">📊 المبيعات والمحاسبة</option>
+             <option value="workshop">🏭 الورش</option>
           </select>
         </div>
 
