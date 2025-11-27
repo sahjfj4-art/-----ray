@@ -2,6 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import Marketplace from './components/Marketplace';
 import Dashboard from './components/Dashboard';
+import FAQView from './components/pages/FAQView';
+import BlogView from './components/pages/BlogView';
+import HelpView from './components/pages/HelpView';
+import PrivacyPolicyView from './components/pages/PrivacyPolicyView';
 import { ViewState } from './types';
 import { BusinessType } from './components/dashboard/config';
 import { ThemeProvider } from './components/common/ThemeContext';
@@ -25,6 +29,10 @@ const App: React.FC = () => {
     setSelectedBusinessType(type as BusinessType);
     setIsAdmin(admin);
     setCurrentView(ViewState.DASHBOARD);
+  };
+
+  const handlePageNavigation = (view: ViewState) => {
+    setCurrentView(view);
   };
 
   // Handle admin login
@@ -68,7 +76,11 @@ const App: React.FC = () => {
   return (
     <ThemeProvider>
       {currentView === ViewState.MARKETPLACE && (
-        <Marketplace onMerchantClick={handleMerchantEntry} onAdminLogin={handleAdminLogin} />
+        <Marketplace 
+          onMerchantClick={handleMerchantEntry} 
+          onAdminLogin={handleAdminLogin}
+          onPageNavigation={handlePageNavigation}
+        />
       )}
       {currentView === ViewState.DASHBOARD && (
         <Dashboard 
@@ -80,6 +92,19 @@ const App: React.FC = () => {
           }} 
         />
       )}
+      {currentView === ViewState.FAQ && <FAQView onPageNavigation={handlePageNavigation} />}
+      {currentView === ViewState.BLOG && <BlogView onPageNavigation={handlePageNavigation} />}
+      {currentView === ViewState.HELP && <HelpView onPageNavigation={handlePageNavigation} />}
+      {currentView === ViewState.PRIVACY_POLICY && <PrivacyPolicyView onPageNavigation={handlePageNavigation} />}
+      {currentView === ViewState.TERMS && <PrivacyPolicyView onPageNavigation={handlePageNavigation} />}
+      {currentView === ViewState.USAGE_POLICY && <PrivacyPolicyView onPageNavigation={handlePageNavigation} />}
+      {currentView === ViewState.CAREERS && <FAQView onPageNavigation={handlePageNavigation} />}
+      {currentView === ViewState.PARTNERS && <FAQView onPageNavigation={handlePageNavigation} />}
+      {currentView === ViewState.DEVELOPMENT && <FAQView onPageNavigation={handlePageNavigation} />}
+      {currentView === ViewState.JOIN_TEAM && <FAQView onPageNavigation={handlePageNavigation} />}
+      {currentView === ViewState.TRAINING && <FAQView onPageNavigation={handlePageNavigation} />}
+      {currentView === ViewState.MARKET && <Marketplace onMerchantClick={handleMerchantEntry} onAdminLogin={handleAdminLogin} onPageNavigation={handlePageNavigation} />}
+      {currentView === ViewState.REFUND_POLICY && <FAQView onPageNavigation={handlePageNavigation} />}
     </ThemeProvider>
   );
 };

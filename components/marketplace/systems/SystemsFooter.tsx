@@ -1,17 +1,46 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { ViewState } from '../../types';
 
-const SystemsFooter: React.FC = () => {
+interface SystemsFooterProps {
+  onPageNavigation?: (view: ViewState) => void;
+}
+
+const SystemsFooter: React.FC<SystemsFooterProps> = ({ onPageNavigation }) => {
   const [currentYear] = useState(new Date().getFullYear());
 
   const handleSystemClick = (systemId: string) => {
-    // Navigate to system landing page
-    window.location.href = `/marketplace/system/${systemId}`;
+    console.log('Navigating to system:', systemId);
+    // For now, redirect to marketplace with system selection
+    if (onPageNavigation) {
+      onPageNavigation(ViewState.MARKETPLACE);
+    }
   };
 
   const handlePageClick = (page: string) => {
-    // Navigate to other pages
-    window.location.href = `/${page}`;
+    console.log('Navigating to page:', page);
+    if (onPageNavigation) {
+      const viewMap: Record<string, ViewState> = {
+        'faq': ViewState.FAQ,
+        'blog': ViewState.BLOG,
+        'help': ViewState.HELP,
+        'privacy-policy': ViewState.PRIVACY_POLICY,
+        'terms': ViewState.TERMS,
+        'usage-policy': ViewState.USAGE_POLICY,
+        'careers': ViewState.CAREERS,
+        'partners': ViewState.PARTNERS,
+        'development': ViewState.DEVELOPMENT,
+        'join-team': ViewState.JOIN_TEAM,
+        'training': ViewState.TRAINING,
+        'market': ViewState.MARKET,
+        'refund-policy': ViewState.REFUND_POLICY
+      };
+      
+      const targetView = viewMap[page];
+      if (targetView) {
+        onPageNavigation(targetView);
+      }
+    }
   };
 
   return (
