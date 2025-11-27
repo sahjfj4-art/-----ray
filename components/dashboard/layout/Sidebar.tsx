@@ -31,6 +31,10 @@ const Sidebar: React.FC<SidebarProps> = ({ config, activeTab, setActiveTab, onLo
        painting: 'للدهانات',
        hardware: 'للأدوات',
        electrical: 'للكهرباء',
+       construction: 'لمشاريع البناء',
+       carwash: 'لغسيل السيارات',
+       logistics: 'للشحن واللوجستيات',
+       agriculture: 'للمزارع والزراعة',
        admin: 'للإدارة'
      };
      return labels[type] || 'عام';
