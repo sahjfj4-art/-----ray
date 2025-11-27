@@ -1081,28 +1081,5 @@ export const systemsData: Record<string, any> = {
     accent: 'text-yellow-600',
     bg: 'bg-yellow-50',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80'
-  },
-  
-  painting: {
-    id: 'painting',
-    title: 'نظام إدارة شركات الدهانات',
-    description: 'نظام متخصص لشركات الدهانات. إدارة الفنيين، المشاريع، المواد، والعملاء.',
-    icon: Paintbrush,
-    features: [
-      { title: 'إدارة الفنيين', desc: 'تنظيم الفنيين وتوزيع المهام.' },
-      { title: 'إدارة المشاريع', desc: 'تتبع المشاريع والمراحل المختلفة.' },
-      { title: 'إدارة المواد', desc: 'تتبع الدهانات والألوان والمخزون.' },
-      { title: 'تتبع الأعمال', desc: 'متابعة حالة كل عمل من البداية للنهاية.' }
-    ],
-    benefits: [
-      { title: 'جودة عالية', desc: 'تنظيم أفضل يضمن جودة الدهان.' },
-      { title: 'سرعة التنفيذ', desc: 'تنظيم أفضل يسرع تنفيذ المشاريع.' },
-      { title: 'رضا العملاء', desc: 'خدمة منظمة تزيد رضا العملاء.' },
-      { title: 'توفير المواد', desc: 'إدارة المواد تقلل الهدر.' }
-    ],
-    color: 'from-pink-600 to-rose-700',
-    accent: 'text-pink-600',
-    bg: 'bg-pink-50',
-    image: 'https://images.unsplash.com/photo-1589927986084-7585283eaa68?auto=format&fit=crop&w=1000&q=80'
   }
 };

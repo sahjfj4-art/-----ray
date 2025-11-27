@@ -101,8 +101,7 @@ const Header: React.FC<HeaderProps> = ({
              <option value="mobileLaundry">🌬️ الغسيل المتنقل</option>
              <option value="subscriptions">📅 الاشتراكات</option>
              <option value="nursery">👶 الحضانات</option>
-             <option value="carWash">🚗 مغاسل السيارات</option>
-             <option value="academy">🏋️ الأكاديميات</option>
+                          <option value="academy">🏋️ الأكاديميات</option>
              <option value="medical">🏥 المجمعات الطبية</option>
              <option value="legal">⚖️ المحاماة</option>
              <option value="consulting">💼 الاستشارات</option>

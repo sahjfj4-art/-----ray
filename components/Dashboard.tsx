@@ -176,8 +176,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout, initialType, isAdmin = 
         return <MobileLaundryDashboard onLogout={onLogout} onSwitchType={setCurrentBusinessType} />;
       case 'subscriptions':
       case 'nursery':
-      case 'carWash':
-      case 'academy':
+            case 'academy':
       case 'medical':
       case 'legal':
       case 'consulting':

@@ -38,7 +38,6 @@ const Sidebar: React.FC<SidebarProps> = ({ config, activeTab, setActiveTab, onLo
        mobileLaundry: 'للغسيل المتنقل',
        subscriptions: 'لإدارة الاشتراكات',
        nursery: 'للحضانات',
-       carWash: 'لمغاسل السيارات',
        academy: 'للأكاديميات',
        medical: 'للمجمعات الطبية',
        legal: 'لمكاتب المحاماة',
