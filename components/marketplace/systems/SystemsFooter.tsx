@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
-import { ViewState } from '../../types';
+import { ViewState } from '../../../types';
 
 interface SystemsFooterProps {
   onPageNavigation?: (view: ViewState) => void;
