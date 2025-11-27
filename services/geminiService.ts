@@ -1,46 +1,29 @@
-import { GoogleGenAI } from "@google/genai";
-
-// Initialize the client
-// API Key is injected via process.env.API_KEY as per instructions
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export const getGeminiResponse = async (
   userMessage: string,
   context: string = "general"
 ): Promise<string> => {
   try {
-    const modelId = 'gemini-2.5-flash'; // Efficient model for chat
-    
-    let systemInstruction = "";
-    
-    if (context === 'merchant') {
-      systemInstruction = `
-        أنت مساعد ذكي لمنصة "راي" (RAY) للتجار.
-        دورك مساعدة التاجر في كتابة وصف للمنتجات، تحليل المبيعات، واقتراح أفكار تسويقية.
-        تحدث باللغة العربية بلهجة مصرية مهنية ومحترفة.
-        اسمك "مساعد راي".
-      `;
-    } else {
-      systemInstruction = `
-        أنت مساعد ذكي لمنصة "راي" (RAY) للمتسوقين.
-        دورك مساعدة المستخدم في العثور على المطاعم، المحلات، والخدمات.
-        تحدث باللغة العربية بلهجة مصرية ودودة.
-        اسمك "مساعد راي".
-      `;
-    }
+    // Use local proxy server in development; in production the same endpoint
+    // should be routed to a secure serverless function or backend.
+    const apiUrl = (import.meta as any).env && (import.meta as any).env.DEV
+      ? 'http://localhost:5174/api/gemini'
+      : '/api/gemini';
 
-    const response = await ai.models.generateContent({
-      model: modelId,
-      contents: userMessage,
-      config: {
-        systemInstruction: systemInstruction,
-        temperature: 0.7,
-      },
+    const res = await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: userMessage, context }),
     });
 
-    return response.text || "عذراً، لم أستطع فهم ذلك.";
+    if (!res.ok) {
+      console.error('Gemini proxy returned error', res.statusText);
+      return 'حدث خطأ في الاتصال بالمساعد الذكي. يرجى المحاولة لاحقاً.';
+    }
+
+    const data = await res.json();
+    return data.text || 'عذراً، لم أستطع فهم ذلك.';
   } catch (error) {
-    console.error("Gemini API Error:", error);
-    return "حدث خطأ في الاتصال بالمساعد الذكي. يرجى المحاولة لاحقاً.";
+    console.error('Gemini client error:', error);
+    return 'حدث خطأ في الاتصال بالمساعد الذكي. يرجى المحاولة لاحقاً.';
   }
 };

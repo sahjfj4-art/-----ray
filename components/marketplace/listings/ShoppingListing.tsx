@@ -1,6 +1,18 @@
-
+import React, { useState } from 'react';
+import BookingModal from '../modals/BookingModal';
+import { useTranslation } from '../../common/GlobalSettings';
 import React from 'react';
 import { ShoppingBag, MapPin, Star, Tag, Filter, Search } from 'lucide-react';
+  const [selected, setSelected] = useState<any | null>(null);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const t = useTranslation();
+
+  const openBooking = (e: React.MouseEvent, item: any) => {
+    e.stopPropagation();
+    setSelected({ ...item, category: 'shopping' });
+    setIsBookingOpen(true);
+  };
+
 
 const shops = [
   { id: 1, name: 'سوبر ماركت خير زمان', rating: 4.6, reviews: 850, image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=500', type: 'سوبر ماركت', location: 'المعادي', status: 'open' },
@@ -66,13 +78,18 @@ const ShoppingListing: React.FC<Props> = ({ onMerchantSelect }) => {
             </div>
 
             <div className="p-5 flex-1 flex flex-col">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition line-clamp-1">{item.name}</h3>
+                <div className="flex items-center gap-2">
+                  <button onClick={(e) => { e.stopPropagation(); onMerchantSelect({ ...item, category: 'shopping' }); }} className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 group-hover:bg-ray-blue group-hover:text-white transition">
+                    <ShoppingBag className="w-4 h-4" />
+                  </button>
+                  <button onClick={(e) => openBooking(e, item)} className="px-3 py-1.5 rounded-lg bg-ray-gold text-ray-blue font-bold text-sm">{t.book || 'احجز'}</button>
+                </div>
                 <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg border border-yellow-100 shrink-0">
                   <Star className="w-3 h-3 text-yellow-500 fill-current" />
                   <span className="text-xs font-bold text-gray-800">{item.rating}</span>
                 </div>
               </div>
+        {selected && <BookingModal open={isBookingOpen} onClose={() => setIsBookingOpen(false)} listing={selected} />}
               
               <div className="flex items-center gap-1 text-sm text-gray-500 mb-4">
                 <MapPin className="w-3.5 h-3.5" />

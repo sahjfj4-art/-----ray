@@ -1,5 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import BookingModal from '../modals/BookingModal';
+import { useTranslation } from '../../common/GlobalSettings';
 import { Wrench, MapPin, Star, Clock, Search, Filter, Shirt, Zap, Droplets } from 'lucide-react';
 
 const services = [
@@ -16,6 +18,16 @@ interface Props {
 }
 
 const ServiceListing: React.FC<Props> = ({ onMerchantSelect }) => {
+  const [selected, setSelected] = useState<any | null>(null);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const t = useTranslation();
+
+  const openBooking = (e: React.MouseEvent, item: any) => {
+    e.stopPropagation();
+    setSelected({ ...item, category: 'services' });
+    setIsBookingOpen(true);
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-in fade-in slide-in-from-bottom-4">
       {/* Header */}
@@ -72,14 +84,13 @@ const ServiceListing: React.FC<Props> = ({ onMerchantSelect }) => {
                   <MapPin className="w-3 h-3" />
                   {item.location}
                 </div>
-                <button className="text-xs font-bold text-cyan-600 bg-cyan-50 px-3 py-1.5 rounded-lg hover:bg-cyan-100 transition">
-                  حجز خدمة
-                </button>
+                <button onClick={(e) => openBooking(e, item)} className="text-xs font-bold text-white px-3 py-1.5 rounded-lg transition bg-cyan-600 hover:bg-cyan-700">{t.book || 'احجز'}</button>
               </div>
             </div>
           </div>
         ))}
       </div>
+      {selected && <BookingModal open={isBookingOpen} onClose={() => setIsBookingOpen(false)} listing={selected} />}
     </div>
   );
 };

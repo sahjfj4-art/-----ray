@@ -1,5 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import BookingModal from '../modals/BookingModal';
+import { useTranslation } from '../../common/GlobalSettings';
 import { Stethoscope, Scissors, MapPin, Star, Calendar, Search, HeartPulse, Dumbbell } from 'lucide-react';
 
 const healthItems = [
@@ -26,6 +28,15 @@ const HealthBeautyListing: React.FC<Props> = ({ onMerchantSelect, category = 'he
   const subTitle = isHealth ? 'أفضل الأطباء والمراكز الطبية' : 'تألقي مع أفضل الصالونات ومراكز التجميل';
   const themeColor = isHealth ? 'text-teal-600' : 'text-pink-600';
   const btnColor = isHealth ? 'bg-teal-600 hover:bg-teal-700' : 'bg-pink-600 hover:bg-pink-700';
+  const [selected, setSelected] = useState<any | null>(null);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const t = useTranslation();
+
+  const openBooking = (e: React.MouseEvent, item: any) => {
+    e.stopPropagation();
+    setSelected({ ...item, category: isHealth ? 'clinic' : 'gym' });
+    setIsBookingOpen(true);
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-in fade-in slide-in-from-bottom-4">
@@ -77,15 +88,16 @@ const HealthBeautyListing: React.FC<Props> = ({ onMerchantSelect, category = 'he
                   <MapPin className="w-3 h-3" />
                   {item.location}
                 </div>
-                <button className={`text-white px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-2 ${btnColor}`}>
+                <button onClick={(e) => openBooking(e, item)} className={`text-white px-4 py-2 rounded-lg text-xs font-bold transition flex items-center gap-2 ${btnColor}`}>
                   <Calendar className="w-3 h-3" />
-                  حجز موعد
+                  {t.book || 'احجز'}
                 </button>
               </div>
             </div>
           </div>
         ))}
       </div>
+      {selected && <BookingModal open={isBookingOpen} onClose={() => setIsBookingOpen(false)} listing={selected} />}
     </div>
   );
 };

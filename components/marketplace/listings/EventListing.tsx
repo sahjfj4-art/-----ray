@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Ticket, GraduationCap, MapPin, Calendar, Search, Music, Video } from 'lucide-react';
 
 const events = [
@@ -11,18 +11,27 @@ const events = [
   { id: 6, name: 'أكاديمية الموسيقى', image: 'https://images.unsplash.com/photo-1514320291940-7c95122b6254?w=500', type: 'تدريب', details: 'تعليم بيانو وجيتار', location: 'المعادي', price: 'اشتراك شهري' },
 ];
 
+import BookingModal from '../modals/BookingModal';
+
 interface Props {
   onMerchantSelect: (merchant: any) => void;
   category?: 'education' | 'entertainment';
 }
 
 const EventListing: React.FC<Props> = ({ onMerchantSelect, category = 'entertainment' }) => {
+  const [selected, setSelected] = useState<any | null>(null);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
   const isEdu = category === 'education';
   const filteredItems = isEdu ? events.filter(e => ['تعليم', 'تدريب'].includes(e.type)) : events.filter(e => !['تعليم', 'تدريب'].includes(e.type));
   
   const title = isEdu ? 'التعليم والتدريب' : 'الترفيه والسياحة';
   const subTitle = isEdu ? 'طوّر مهاراتك مع أفضل المراكز التعليمية' : 'استمتع بأفضل الأوقات والفعاليات';
   const themeColor = isEdu ? 'text-indigo-600' : 'text-purple-600';
+
+  const openBooking = (item: any) => {
+    setSelected(item);
+    setIsBookingOpen(true);
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-in fade-in slide-in-from-bottom-4">
@@ -70,19 +79,23 @@ const EventListing: React.FC<Props> = ({ onMerchantSelect, category = 'entertain
               
               <p className="text-sm text-gray-500 mb-4">{item.details}</p>
               
-              <div className="mt-auto pt-4 border-t border-gray-50 flex justify-between items-center">
+                <div className="mt-auto pt-4 border-t border-gray-50 flex justify-between items-center">
                 <div className="flex items-center gap-1 text-xs text-gray-400">
                   <MapPin className="w-3 h-3" />
                   {item.location}
                 </div>
-                <span className="text-sm font-black text-gray-900 bg-gray-100 px-3 py-1 rounded-lg">
-                  {item.price}
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-black text-gray-900 bg-gray-100 px-3 py-1 rounded-lg">{item.price}</span>
+                  <button onClick={(e) => { e.stopPropagation(); openBooking(item); }} className="px-3 py-1 rounded-lg bg-ray-blue text-white text-sm hover:opacity-90">احجز</button>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
+        {selected && (
+          <BookingModal open={isBookingOpen} onClose={() => setIsBookingOpen(false)} listing={selected} />
+        )}
     </div>
   );
 };

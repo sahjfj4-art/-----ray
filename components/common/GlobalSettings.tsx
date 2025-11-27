@@ -203,6 +203,13 @@ export const translations = {
     
     // رسائل
     noDataFound: 'لا توجد بيانات',
+    book: 'احجز',
+    bookNow: 'احجز الآن',
+    bookingSuccess: 'تم حجزك بنجاح',
+    bookingError: 'فشل الحجز. حاول مرة أخرى',
+    bookingDate: 'تاريخ الحجز',
+    selectDate: 'اختر التاريخ',
+    guests: 'عدد الأشخاص',
     confirmDelete: 'هل أنت متأكد من الحذف؟',
     deleteSuccess: 'تم الحذف بنجاح',
     saveSuccess: 'تم الحفظ بنجاح',
@@ -321,6 +328,13 @@ export const translations = {
     
     // رسائل
     noDataFound: 'No data found',
+    book: 'Book',
+    bookNow: 'Book Now',
+    bookingSuccess: 'Booking successful',
+    bookingError: 'Booking failed. Try again',
+    bookingDate: 'Booking date',
+    selectDate: 'Select date',
+    guests: 'Guests',
     confirmDelete: 'Are you sure you want to delete?',
     deleteSuccess: 'Deleted successfully',
     saveSuccess: 'Saved successfully',

@@ -1,5 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import BookingModal from '../modals/BookingModal';
+import { useTranslation } from '../../common/GlobalSettings';
 import { Car, MapPin, Search, Filter, Star, ShieldCheck, Phone } from 'lucide-react';
 
 const dealerships = [
@@ -16,6 +18,16 @@ interface Props {
 }
 
 const CarListing: React.FC<Props> = ({ onMerchantSelect }) => {
+  const [selected, setSelected] = useState<any | null>(null);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const t = useTranslation();
+
+  const openBooking = (e: React.MouseEvent, item: any) => {
+    e.stopPropagation();
+    setSelected({ id: item.id, name: item.title, category: 'cars', image: item.image });
+    setIsBookingOpen(true);
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-in fade-in slide-in-from-bottom-4">
       {/* Header */}
@@ -82,18 +94,18 @@ const CarListing: React.FC<Props> = ({ onMerchantSelect }) => {
                  <span className="text-lg font-black text-red-600">{item.activeListings} سيارة</span>
               </div>
 
-              <div className="mt-auto flex gap-2">
-                 <button className="flex-1 py-2 bg-red-600 text-white rounded-lg font-bold text-sm hover:bg-red-700 transition">
-                    عرض السيارات
-                 </button>
-                 <button className="p-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 transition">
+                <div className="mt-auto flex gap-2">
+                  <button onClick={(e) => { e.stopPropagation(); onMerchantSelect({ id: item.id, name: item.title, category: 'cars' }); }} className="flex-1 py-2 bg-red-600 text-white rounded-lg font-bold text-sm hover:bg-red-700 transition">عرض السيارات</button>
+                  <button onClick={(e) => openBooking(e, item)} className="px-4 py-2 bg-ray-gold text-ray-blue rounded-lg font-bold">{t.book || 'احجز'}</button>
+                  <button className="p-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 transition">
                     <Phone className="w-5 h-5" />
-                 </button>
-              </div>
+                  </button>
+                </div>
             </div>
           </div>
         ))}
       </div>
+          {selected && <BookingModal open={isBookingOpen} onClose={() => setIsBookingOpen(false)} listing={selected} />}
     </div>
   );
 };

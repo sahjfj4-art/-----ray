@@ -1,5 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import BookingModal from '../modals/BookingModal';
+import { useTranslation } from '../../common/GlobalSettings';
 import { Building2, MapPin, Search, Filter, Star, Home, Users } from 'lucide-react';
 
 const companies = [
@@ -16,7 +18,27 @@ interface Props {
 }
 
 const RealEstateListing: React.FC<Props> = ({ onMerchantSelect }) => {
-  return (
+   const [selected, setSelected] = useState<any | null>(null);
+   const [isBookingOpen, setIsBookingOpen] = useState(false);
+   const t = useTranslation();
+
+   const openBooking = (e: React.MouseEvent, item: any) => {
+      e.stopPropagation();
+      const payload = {
+         id: item.id,
+         name: item.title,
+         type: item.type,
+         location: item.location,
+         rating: item.rating,
+         reviews: 150,
+         image: item.image,
+         category: 'realestate'
+      };
+      setSelected(payload);
+      setIsBookingOpen(true);
+   };
+
+   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-in fade-in slide-in-from-bottom-4">
       {/* Header */}
       <div className="mb-8 text-center md:text-right">
@@ -96,14 +118,16 @@ const RealEstateListing: React.FC<Props> = ({ onMerchantSelect }) => {
                     <Star className="w-4 h-4 fill-current" />
                     {item.rating}
                  </div>
-                 <button className="text-sm font-bold text-green-700 bg-green-50 px-4 py-2 rounded-lg hover:bg-green-100 transition">
-                    تصفح الوحدات
-                 </button>
+                         <div className="flex items-center gap-2">
+                            <button onClick={(e) => { e.stopPropagation(); onMerchantSelect({ id: item.id, name: item.title, category: 'realestate' }); }} className="text-sm font-bold text-green-700 bg-green-50 px-4 py-2 rounded-lg hover:bg-green-100 transition">تصفح الوحدات</button>
+                            <button onClick={(e) => openBooking(e, item)} className="text-sm font-bold text-white bg-ray-blue px-4 py-2 rounded-lg hover:opacity-90">{t.book || 'احجز'}</button>
+                         </div>
               </div>
             </div>
           </div>
         ))}
       </div>
+         {selected && <BookingModal open={isBookingOpen} onClose={() => setIsBookingOpen(false)} listing={selected} />}
     </div>
   );
 };
