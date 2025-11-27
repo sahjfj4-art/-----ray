@@ -10,10 +10,10 @@ import {
   Syringe, Pill, School, GraduationCap, Video,
   Shirt, Droplets, Waves, Scissors, Ticket, Layers,
   Sparkles, Grid, LayoutGrid, BarChart3, HardHat, Warehouse, FileSpreadsheet,
-  Settings, Bell, AlertCircle, Lightbulb, Zap, Calculator, Shield, TrendingUp
+  Settings, Bell, AlertCircle, Lightbulb, Zap, Calculator, Shield, TrendingUp, Leaf
 } from 'lucide-react';
 
-export type BusinessType = 'general' | 'restaurant' | 'retail' | 'realestate' | 'cars' | 'clinic' | 'gym' | 'services' | 'laundry' | 'clothing' | 'salon' | 'pharmacy' | 'contracting' | 'plumbing' | 'painting' | 'hardware' | 'electrical' | 'admin';
+export type BusinessType = 'general' | 'restaurant' | 'retail' | 'realestate' | 'cars' | 'clinic' | 'gym' | 'services' | 'laundry' | 'clothing' | 'salon' | 'pharmacy' | 'contracting' | 'plumbing' | 'painting' | 'hardware' | 'electrical' | 'construction' | 'carwash' | 'logistics' | 'agriculture' | 'admin';
 
 export interface DashboardConfig {
   type: BusinessType;
@@ -609,6 +609,134 @@ export const dashboardConfigs: Record<BusinessType, DashboardConfig> = {
       { id: '#EL-101', col1: 'مقاول رامي', col2: '6 قطع', col3: '2,100 ج', status: 'paid', time: 'منذ 20 د' },
       { id: '#EL-102', col1: 'أحمد سالم', col2: '3 قطع', col3: '750 ج', status: 'paid', time: 'منذ ساعة' },
       { id: '#EL-103', col1: 'شركة الإنشاءات', col2: '10 قطع', col3: '4,200 ج', status: 'credit', time: 'منذ ساعتين' },
+    ]
+  },
+  construction: {
+    type: 'construction',
+    title: 'إدارة مشاريع البناء',
+    themeColor: 'yellow',
+    navItems: [
+      { id: 'overview', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'projects', label: 'المشاريع', icon: HardHat },
+      { id: 'materials', label: 'المواد والمستلزمات', icon: Package },
+      { id: 'schedule', label: 'جدول العمال', icon: Calendar },
+      { id: 'team', label: 'فريق العمل', icon: Users },
+      { id: 'alerts', label: 'التنبيهات', icon: AlertCircle },
+      { id: 'invoices', label: 'الفواتير والعقود', icon: FileText },
+    ],
+    stats: [
+      { label: 'المشاريع النشطة', value: '12', trend: 2, icon: HardHat },
+      { label: 'العمال', value: '48', trend: 5, icon: Users },
+      { label: 'المواد المتوفرة', value: '156', trend: 8, icon: Package },
+      { label: 'التنبيهات', value: '3', trend: -1, icon: AlertCircle },
+    ],
+    quickActions: [
+      { label: 'مشروع جديد', icon: Plus, action: 'new_project' },
+      { label: 'إضافة مواد', icon: Package, action: 'add_materials' },
+      { label: 'جدولة عمال', icon: Calendar, action: 'schedule_workers' },
+      { label: 'فاتورة جديدة', icon: FileText, action: 'new_invoice' },
+    ],
+    tableHeaders: ['المشروع', 'التقدم', 'العمال', 'المواد', 'الحالة'],
+    data: [
+      { id: 'PRJ-001', col1: 'مشروع سكني #1', col2: '65%', col3: '12', col4: '450 وحدة', status: 'in_progress' },
+      { id: 'PRJ-002', col1: 'مشروع تجاري #2', col2: '45%', col3: '18', col4: '200 وحدة', status: 'active' },
+      { id: 'PRJ-003', col1: 'مشروع إداري #3', col2: '80%', col3: '8', col4: '100 وحدة', status: 'in_progress' },
+    ]
+  },
+  carwash: {
+    type: 'carwash',
+    title: 'محطة غسيل السيارات',
+    themeColor: 'cyan',
+    navItems: [
+      { id: 'overview', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'bookings', label: 'الحجوزات', icon: Calendar },
+      { id: 'services', label: 'الخدمات', icon: Zap },
+      { id: 'staff', label: 'الموظفين', icon: Users },
+      { id: 'orders', label: 'الطلبات', icon: ClipboardList },
+      { id: 'loyalty', label: 'برنامج الولاء', icon: Star },
+      { id: 'invoices', label: 'الفواتير', icon: FileText },
+    ],
+    stats: [
+      { label: 'الحجوزات اليوم', value: '24', trend: 8, icon: Calendar },
+      { label: 'الموظفين', value: '8', trend: 0, icon: Users },
+      { label: 'الخدمات', value: '6', trend: 2, icon: Zap },
+      { label: 'الإيرادات', value: '2,450 ج', trend: 12, icon: DollarSign },
+    ],
+    quickActions: [
+      { label: 'حجز جديد', icon: Calendar, action: 'new_booking' },
+      { label: 'إضافة خدمة', icon: Plus, action: 'add_service' },
+      { label: 'تسجيل موظف', icon: Users, action: 'add_staff' },
+      { label: 'فاتورة', icon: FileText, action: 'new_invoice' },
+    ],
+    tableHeaders: ['الحجز', 'السيارة', 'الخدمة', 'الوقت', 'الحالة'],
+    data: [
+      { id: 'BK-001', col1: 'سيارة #1', col2: 'غسيل كامل', col3: '10:00 صباحاً', status: 'confirmed' },
+      { id: 'BK-002', col1: 'سيارة #2', col2: 'غسيل سريع', col3: '11:30 صباحاً', status: 'pending' },
+      { id: 'BK-003', col1: 'سيارة #3', col2: 'تلميع', col3: '02:00 مساءً', status: 'confirmed' },
+    ]
+  },
+  logistics: {
+    type: 'logistics',
+    title: 'إدارة الشحن واللوجستيات',
+    themeColor: 'green',
+    navItems: [
+      { id: 'overview', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'shipments', label: 'الشحنات', icon: Package },
+      { id: 'fleet', label: 'الأسطول', icon: Truck },
+      { id: 'tracking', label: 'التتبع', icon: Map },
+      { id: 'drivers', label: 'السائقين', icon: Users },
+      { id: 'issues', label: 'المشاكل', icon: AlertCircle },
+      { id: 'invoices', label: 'الفواتير', icon: FileText },
+    ],
+    stats: [
+      { label: 'الشحنات النشطة', value: '156', trend: 12, icon: Package },
+      { label: 'السيارات', value: '24', trend: 0, icon: Truck },
+      { label: 'السائقين', value: '32', trend: 3, icon: Users },
+      { label: 'التأخيرات', value: '2', trend: -1, icon: AlertCircle },
+    ],
+    quickActions: [
+      { label: 'شحنة جديدة', icon: Package, action: 'new_shipment' },
+      { label: 'تتبع شحنة', icon: Map, action: 'track_shipment' },
+      { label: 'إضافة سائق', icon: Users, action: 'add_driver' },
+      { label: 'تقرير', icon: FileText, action: 'generate_report' },
+    ],
+    tableHeaders: ['الشحنة', 'المصدر', 'الوجهة', 'الحالة', 'التقدم'],
+    data: [
+      { id: 'SHP-001', col1: 'القاهرة', col2: 'الإسكندرية', col3: 'قيد التوصيل', col4: '75%' },
+      { id: 'SHP-002', col1: 'الجيزة', col2: 'الفيوم', col3: 'قيد التوصيل', col4: '45%' },
+      { id: 'SHP-003', col1: 'القاهرة', col2: 'السويس', col3: 'في الطريق', col4: '60%' },
+    ]
+  },
+  agriculture: {
+    type: 'agriculture',
+    title: 'إدارة المزارع والزراعة',
+    themeColor: 'green',
+    navItems: [
+      { id: 'overview', label: 'الرئيسية', icon: LayoutDashboard },
+      { id: 'crops', label: 'المحاصيل', icon: Leaf },
+      { id: 'irrigation', label: 'الري', icon: Droplets },
+      { id: 'productivity', label: 'الإنتاجية', icon: TrendingUp },
+      { id: 'issues', label: 'المشاكل', icon: AlertCircle },
+      { id: 'staff', label: 'الموظفين', icon: Users },
+      { id: 'sales', label: 'المبيعات', icon: FileText },
+    ],
+    stats: [
+      { label: 'المحاصيل النشطة', value: '8', trend: 2, icon: Leaf },
+      { label: 'المساحة المزروعة', value: '45 فدان', trend: 5, icon: TrendingUp },
+      { label: 'الري اليومي', value: '2,400 م³', trend: 8, icon: Droplets },
+      { label: 'الإنتاجية', value: '85%', trend: 3, icon: CheckCircle },
+    ],
+    quickActions: [
+      { label: 'محصول جديد', icon: Plus, action: 'new_crop' },
+      { label: 'جدولة ري', icon: Droplets, action: 'schedule_irrigation' },
+      { label: 'تقرير إنتاجية', icon: FileText, action: 'productivity_report' },
+      { label: 'تسجيل عامل', icon: Users, action: 'add_staff' },
+    ],
+    tableHeaders: ['المحصول', 'الحالة', 'المساحة', 'التقدم', 'الحصاد المتوقع'],
+    data: [
+      { id: 'CRP-001', col1: 'القمح', col2: 'نمو', col3: '15 فدان', col4: '65%', status: 'growing' },
+      { id: 'CRP-002', col1: 'الذرة', col2: 'حصاد قريب', col3: '20 فدان', col4: '90%', status: 'ready' },
+      { id: 'CRP-003', col1: 'الطماطم', col2: 'إثمار', col3: '10 فدان', col4: '45%', status: 'fruiting' },
     ]
   },
   admin: {

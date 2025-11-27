@@ -1,7 +1,8 @@
 
 import { 
   ShoppingBag, Utensils, Home, Car, Sparkles, Stethoscope, 
-  GraduationCap, Ticket, Dumbbell, Wrench, Store, ChefHat, Pill, Shirt, Droplets, Scissors, Globe
+  GraduationCap, Ticket, Dumbbell, Wrench, Store, ChefHat, Pill, Shirt, Droplets, Scissors, Globe,
+  Hammer, Paintbrush, Zap, Droplet, Briefcase, Users, Truck, Leaf
 } from 'lucide-react';
 
 export interface SubCategory {
@@ -508,5 +509,137 @@ export const systemsData: Record<string, any> = {
     accent: 'text-teal-600',
     bg: 'bg-teal-50',
     image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1000&q=80'
+  },
+  construction: {
+    id: 'construction',
+    title: 'نظام إدارة مشاريع البناء',
+    description: 'إدارة شاملة لمشاريع البناء والتشييد. جدولة العمال، تتبع المواد، والميزانيات.',
+    icon: Hammer,
+    features: [
+      { title: 'جدولة العمال', desc: 'نظم فريق العمل وتتبع الحضور والإنتاجية.' },
+      { title: 'إدارة المواد', desc: 'تتبع المواد الخام والمستلزمات ومراقبة التكاليف.' },
+      { title: 'تقارير المشروع', desc: 'متابعة تقدم المشروع والمراحل المختلفة.' },
+      { title: 'الفواتير والعقود', desc: 'إدارة العقود والفواتير مع المقاولين والموردين.' }
+    ],
+    benefits: [
+      { title: 'تحكم أفضل', desc: 'رؤية واضحة لتقدم المشروع والتكاليف.' },
+      { title: 'توفير التكاليف', desc: 'تتبع دقيق للمواد يمنع الهدر والسرقات.' },
+      { title: 'التزام بالمواعيد', desc: 'جدولة ذكية تضمن إنهاء المشروع في الموعد.' },
+      { title: 'إدارة مالية', desc: 'فواتير دقيقة وحسابات واضحة مع جميع الأطراف.' }
+    ],
+    color: 'from-yellow-600 to-orange-700',
+    accent: 'text-yellow-600',
+    bg: 'bg-yellow-50',
+    image: 'https://images.unsplash.com/photo-1581578731548-c64695c952952?auto=format&fit=crop&w=1000&q=80'
+  },
+  painting: {
+    id: 'painting',
+    title: 'نظام إدارة شركات الدهان والديكور',
+    description: 'نظام متخصص لشركات الدهان والديكور. عروض الأسعار، جدولة المشاريع، والعملاء.',
+    icon: Paintbrush,
+    features: [
+      { title: 'عروض الأسعار', desc: 'إنشاء عروض احترافية بسرعة مع حساب التكاليف تلقائياً.' },
+      { title: 'جدولة المشاريع', desc: 'نظم مشاريعك والعمال مع تجنب التضارب.' },
+      { title: 'إدارة المخزون', desc: 'تتبع الدهانات والمواد والأدوات.' },
+      { title: 'تقييمات العملاء', desc: 'اجمع تقييمات وصور قبل وبعد من كل مشروع.' }
+    ],
+    benefits: [
+      { title: 'عروض سريعة', desc: 'إنشاء عروض احترافية في دقائق يزيد فرص البيع.' },
+      { title: 'إدارة فعالة', desc: 'جدولة ذكية توزع المشاريع على العمال بكفاءة.' },
+      { title: 'سمعة قوية', desc: 'صور ومشاريع منظمة تبني سمعة احترافية.' },
+      { title: 'أرباح أعلى', desc: 'حساب دقيق للتكاليف يضمن هامش ربح جيد.' }
+    ],
+    color: 'from-purple-600 to-pink-700',
+    accent: 'text-purple-600',
+    bg: 'bg-purple-50',
+    image: 'https://images.unsplash.com/photo-1578926314433-c6e7ad7eb744?auto=format&fit=crop&w=1000&q=80'
+  },
+  hardware: {
+    id: 'hardware',
+    title: 'نظام إدارة متاجر الأدوات والمعدات',
+    description: 'نظام متخصص لمتاجر الأدوات والمعدات. كاشير، مخزون، وإدارة الموردين.',
+    icon: Wrench,
+    features: [
+      { title: 'كاشير متقدم', desc: 'بيع سريع مع دعم الباركود والدفع الإلكتروني.' },
+      { title: 'إدارة المخزون', desc: 'تتبع دقيق للأدوات والمعدات مع تنبيهات النواقص.' },
+      { title: 'إدارة الموردين', desc: 'تنظيم الطلبيات والفواتير والحسابات.' },
+      { title: 'تقارير المبيعات', desc: 'تحليلات لأداء المنتجات والأقسام المختلفة.' }
+    ],
+    benefits: [
+      { title: 'سرعة البيع', desc: 'كاشير سريع يقلل طوابير الانتظار.' },
+      { title: 'تقليل الهالك', desc: 'تتبع دقيق يمنع الخسائر والسرقات.' },
+      { title: 'إدارة أفضل', desc: 'تنظيم الموردين يضمن توفر المنتجات.' },
+      { title: 'قرارات ذكية', desc: 'التقارير تساعد في اختيار المنتجات الرابحة.' }
+    ],
+    color: 'from-gray-700 to-slate-900',
+    accent: 'text-gray-700',
+    bg: 'bg-gray-50',
+    image: 'https://images.unsplash.com/photo-1578926314433-c6e7ad7eb744?auto=format&fit=crop&w=1000&q=80'
+  },
+  carwash: {
+    id: 'carwash',
+    title: 'نظام إدارة محطات غسيل السيارات',
+    description: 'نظام متخصص لمحطات غسيل السيارات. حجوزات، إدارة الفريق، والفواتير.',
+    icon: Droplet,
+    features: [
+      { title: 'حجز المواعيد', desc: 'جدول إلكتروني لحجز خدمات الغسيل والتفاصيل.' },
+      { title: 'إدارة الفريق', desc: 'تتبع أداء العمال وحساب العمولات.' },
+      { title: 'إدارة الخدمات', desc: 'أنواع خدمات مختلفة مع أسعار مخصصة.' },
+      { title: 'برنامج الولاء', desc: 'نقاط وعروض تشجع العملاء على العودة.' }
+    ],
+    benefits: [
+      { title: 'تنظيم أفضل', desc: 'جدول منظم يمنع الفوضى والتأخير.' },
+      { title: 'رضا العملاء', desc: 'مواعيد محجوزة توفر وقت الانتظار.' },
+      { title: 'إدارة فعالة', desc: 'تتبع أداء العمال يرفع الإنتاجية.' },
+      { title: 'عملاء أوفياء', desc: 'برنامج الولاء يزيد معدل التكرار.' }
+    ],
+    color: 'from-blue-500 to-cyan-600',
+    accent: 'text-blue-600',
+    bg: 'bg-blue-50',
+    image: 'https://images.unsplash.com/photo-1601584942197-04bbb2b033d7?auto=format&fit=crop&w=1000&q=80'
+  },
+  logistics: {
+    id: 'logistics',
+    title: 'نظام إدارة الشحن واللوجستيات',
+    description: 'نظام متكامل لإدارة الشحنات والتوصيل. تتبع الطرود، إدارة الأسطول، والعملاء.',
+    icon: Truck,
+    features: [
+      { title: 'تتبع الشحنات', desc: 'تتبع فوري لكل شحنة من الاستلام للتسليم.' },
+      { title: 'إدارة الأسطول', desc: 'تتبع السيارات والسائقين والصيانة.' },
+      { title: 'إدارة العملاء', desc: 'ملفات شاملة للعملاء والعناوين والتاريخ.' },
+      { title: 'فواتير وتقارير', desc: 'حساب تلقائي للفواتير والتقارير المفصلة.' }
+    ],
+    benefits: [
+      { title: 'شفافية كاملة', desc: 'تتبع فوري يزيد ثقة العملاء.' },
+      { title: 'كفاءة التشغيل', desc: 'جدولة ذكية توفر الوقت والوقود.' },
+      { title: 'تحكم أفضل', desc: 'رؤية واضحة لكل شحنة والأسطول.' },
+      { title: 'أرباح أعلى', desc: 'حساب دقيق للتكاليف يضمن هامش ربح جيد.' }
+    ],
+    color: 'from-green-600 to-emerald-700',
+    accent: 'text-green-600',
+    bg: 'bg-green-50',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80'
+  },
+  agriculture: {
+    id: 'agriculture',
+    title: 'نظام إدارة المزارع والزراعة',
+    description: 'نظام متخصص للمزارع والمشاتل. إدارة المحاصيل، الري، والمبيعات.',
+    icon: Leaf,
+    features: [
+      { title: 'إدارة المحاصيل', desc: 'تتبع مراحل النمو والحصاد والإنتاجية.' },
+      { title: 'جدولة الري', desc: 'نظام ذكي لجدولة الري بناءً على الطقس والتربة.' },
+      { title: 'إدارة المخزون', desc: 'تتبع الأسمدة والمبيدات والمستلزمات.' },
+      { title: 'إدارة المبيعات', desc: 'تسويق وبيع المحاصيل مباشرة للعملاء.' }
+    ],
+    benefits: [
+      { title: 'إنتاجية أعلى', desc: 'جدولة ذكية للري والعناية تزيد الإنتاج.' },
+      { title: 'توفير المياه', desc: 'نظام الري الذكي يقلل استهلاك المياه.' },
+      { title: 'تقليل التكاليف', desc: 'إدارة دقيقة للمستلزمات توفر المال.' },
+      { title: 'أسعار أفضل', desc: 'بيع مباشر يزيل الوسطاء ويرفع الأرباح.' }
+    ],
+    color: 'from-green-500 to-lime-600',
+    accent: 'text-green-600',
+    bg: 'bg-green-50',
+    image: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=1000&q=80'
   }
 };

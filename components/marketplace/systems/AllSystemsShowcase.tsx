@@ -46,7 +46,7 @@ const AllSystemsShowcase: React.FC<AllSystemsShowcaseProps> = ({ onSystemSelect 
           </div>
           
           <h1 className="text-5xl md:text-7xl font-black mb-6 text-gray-900 dark:text-white leading-tight">
-            أكثر من <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">15 نظام</span>
+            أكثر من <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">23 نظام</span>
             <br />
             لكل أنواع الأعمال
           </h1>
