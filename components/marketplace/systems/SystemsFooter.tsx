@@ -1,8 +1,20 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const SystemsFooter: React.FC = () => {
   const [currentYear] = useState(new Date().getFullYear());
+  const navigate = useNavigate();
+
+  const handleSystemClick = (systemId: string) => {
+    // Navigate to system landing page
+    navigate(`/marketplace/system/${systemId}`);
+  };
+
+  const handlePageClick = (page: string) => {
+    // Navigate to other pages
+    navigate(`/${page}`);
+  };
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -34,11 +46,11 @@ const SystemsFooter: React.FC = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-bold text-yellow-400">الدعم والمساعدة</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition">الأسئلة الشائعة</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition">المدونة</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition">مركز المساعدة</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition">عين السوق</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition">سياسة استرداد الأموال</a></li>
+              <li><button onClick={() => handlePageClick('faq')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full">الأسئلة الشائعة</button></li>
+              <li><button onClick={() => handlePageClick('blog')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full">المدونة</button></li>
+              <li><button onClick={() => handlePageClick('help')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full">مركز المساعدة</button></li>
+              <li><button onClick={() => handlePageClick('market')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full">عين السوق</button></li>
+              <li><button onClick={() => handlePageClick('refund-policy')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full">سياسة استرداد الأموال</button></li>
             </ul>
           </div>
 
@@ -46,11 +58,11 @@ const SystemsFooter: React.FC = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-bold text-yellow-400">وظائف وشراكات</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition">وظائف راي</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition">برنامج شركاء راي</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition">فرص التطوير</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition">الانضمام كفريق</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition">برنامج التدريب</a></li>
+              <li><button onClick={() => handlePageClick('careers')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full">وظائف راي</button></li>
+              <li><button onClick={() => handlePageClick('partners')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full">برنامج شركاء راي</button></li>
+              <li><button onClick={() => handlePageClick('development')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full">فرص التطوير</button></li>
+              <li><button onClick={() => handlePageClick('join-team')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full">الانضمام كفريق</button></li>
+              <li><button onClick={() => handlePageClick('training')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full">برنامج التدريب</button></li>
             </ul>
           </div>
 
@@ -81,16 +93,16 @@ const SystemsFooter: React.FC = () => {
             <div className="space-y-4">
               <h4 className="text-lg font-bold text-yellow-400">أنظمة الحجوزات</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة الحجوزات</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة صوالين التجميل والحلاقة</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة الحضانات</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة مغاسل السيارات</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة الأكاديميات والأندية الرياضية</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة حجوزات المطاعم</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة المجمعات الطبية</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة مكاتب المحاماة</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة الشركات الإستشارية</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام ادارة حجوزات الشاليهات و المنتجعات</a></li>
+                <li><button onClick={() => handleSystemClick('subscriptions')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة الحجوزات</button></li>
+                <li><button onClick={() => handleSystemClick('salon')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة صوالين التجميل والحلاقة</button></li>
+                <li><button onClick={() => handleSystemClick('nursery')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة الحضانات</button></li>
+                <li><button onClick={() => handleSystemClick('carwash')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة مغاسل السيارات</button></li>
+                <li><button onClick={() => handleSystemClick('academy')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة الأكاديميات والأندية الرياضية</button></li>
+                <li><button onClick={() => handleSystemClick('restaurant')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة حجوزات المطاعم</button></li>
+                <li><button onClick={() => handleSystemClick('medical')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة المجمعات الطبية</button></li>
+                <li><button onClick={() => handleSystemClick('legal')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة مكاتب المحاماة</button></li>
+                <li><button onClick={() => handleSystemClick('consulting')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة الشركات الإستشارية</button></li>
+                <li><button onClick={() => handleSystemClick('resorts')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام ادارة حجوزات الشاليهات و المنتجعات</button></li>
               </ul>
             </div>
 
@@ -98,15 +110,13 @@ const SystemsFooter: React.FC = () => {
             <div className="space-y-4">
               <h4 className="text-lg font-bold text-yellow-400">أنظمة الخدمات</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة خدمات التنظيف</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة الصيانة</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة خدمات التوصيل</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة المغاسل والدراي كلين</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة الخدمات المنزلية</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام الغسيل المتنقل</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة خدمات التنظيف</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة شركات الصيانة</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة الخدمات اللوجستية</a></li>
+                <li><button onClick={() => handleSystemClick('cleaning')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة خدمات التنظيف</button></li>
+                <li><button onClick={() => handleSystemClick('maintenance')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة الصيانة</button></li>
+                <li><button onClick={() => handleSystemClick('delivery')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة خدمات التوصيل</button></li>
+                <li><button onClick={() => handleSystemClick('dryCleaning')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة المغاسل والدراي كلين</button></li>
+                <li><button onClick={() => handleSystemClick('homeServices')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة الخدمات المنزلية</button></li>
+                <li><button onClick={() => handleSystemClick('mobileLaundry')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام الغسيل المتنقل</button></li>
+                <li><button onClick={() => handleSystemClick('logistics')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة الخدمات اللوجستية</button></li>
               </ul>
             </div>
 
@@ -114,14 +124,14 @@ const SystemsFooter: React.FC = () => {
             <div className="space-y-4">
               <h4 className="text-lg font-bold text-yellow-400">أنظمة المبيعات</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة محلات التجزئة</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة المطاعم</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة محلات الملابس</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة السيارات</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة الاشتراكات</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة نقاط البيع</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة المخزون</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة المبيعات والمحاسبة</a></li>
+                <li><button onClick={() => handleSystemClick('retail')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة محلات التجزئة</button></li>
+                <li><button onClick={() => handleSystemClick('restaurant')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة المطاعم</button></li>
+                <li><button onClick={() => handleSystemClick('clothing')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة محلات الملابس</button></li>
+                <li><button onClick={() => handleSystemClick('cars')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة السيارات</button></li>
+                <li><button onClick={() => handleSystemClick('subscriptions')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة الاشتراكات</button></li>
+                <li><button onClick={() => handleSystemClick('pos')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة نقاط البيع</button></li>
+                <li><button onClick={() => handleSystemClick('inventory')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة المخزون</button></li>
+                <li><button onClick={() => handleSystemClick('salesAccounting')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة المبيعات والمحاسبة</button></li>
               </ul>
             </div>
 
@@ -129,16 +139,16 @@ const SystemsFooter: React.FC = () => {
             <div className="space-y-4">
               <h4 className="text-lg font-bold text-yellow-400">أنظمة المهن</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة العيادات</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة الصالونات</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة الأندية الرياضية</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة العقارات</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة المقاولات</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة الزراعة</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة الإنشاءات</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة الورش والمصانع</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة شركات الكهرباء</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition text-sm">نظام إدارة شركات الدهانات</a></li>
+                <li><button onClick={() => handleSystemClick('clinic')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة العيادات</button></li>
+                <li><button onClick={() => handleSystemClick('salon')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة الصالونات</button></li>
+                <li><button onClick={() => handleSystemClick('gym')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة الأندية الرياضية</button></li>
+                <li><button onClick={() => handleSystemClick('realestate')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة العقارات</button></li>
+                <li><button onClick={() => handleSystemClick('contracting')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة المقاولات</button></li>
+                <li><button onClick={() => handleSystemClick('agriculture')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة الزراعة</button></li>
+                <li><button onClick={() => handleSystemClick('construction')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة الإنشاءات</button></li>
+                <li><button onClick={() => handleSystemClick('workshop')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة الورش والمصانع</button></li>
+                <li><button onClick={() => handleSystemClick('electrical')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة شركات الكهرباء</button></li>
+                <li><button onClick={() => handleSystemClick('painting')} className="text-gray-300 hover:text-yellow-400 transition text-right w-full text-sm">نظام إدارة شركات الدهانات</button></li>
               </ul>
             </div>
           </div>
@@ -147,12 +157,12 @@ const SystemsFooter: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © {currentYear} منصة راي. جميع الحقوق محفوظة.
+            {currentYear} منصة راي. جميع الحقوق محفوظة.
           </p>
           <div className="flex space-x-6 space-x-reverse mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-yellow-400 transition text-sm">سياسة الخصوصية</a>
-            <a href="#" className="text-gray-400 hover:text-yellow-400 transition text-sm">الشروط والأحكام</a>
-            <a href="#" className="text-gray-400 hover:text-yellow-400 transition text-sm">سياسة الاستخدام</a>
+            <button onClick={() => handlePageClick('privacy-policy')} className="text-gray-400 hover:text-yellow-400 transition text-sm">سياسة الخصوصية</button>
+            <button onClick={() => handlePageClick('terms')} className="text-gray-400 hover:text-yellow-400 transition text-sm">الشروط والأحكام</button>
+            <button onClick={() => handlePageClick('usage-policy')} className="text-gray-400 hover:text-yellow-400 transition text-sm">سياسة الاستخدام</button>
           </div>
         </div>
       </div>
