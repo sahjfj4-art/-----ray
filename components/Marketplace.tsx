@@ -6,7 +6,7 @@ import Footer from './marketplace/layout/Footer';
 import Hero from './marketplace/sections/Hero';
 import Featured from './marketplace/sections/Featured';
 import OffersAndDeals from './marketplace/sections/OffersAndDeals';
-import SystemLanding from './marketplace/systems/SystemLanding';
+import SystemLandingPage from './marketplace/systems/SystemLandingPage';
 import AllSystemsShowcase from './marketplace/systems/AllSystemsShowcase'; 
 import MerchantRegisterView from './marketplace/views/MerchantRegisterView';
 import { systemsData } from './marketplace/data';
@@ -142,9 +142,10 @@ const Marketplace: React.FC<MarketplaceProps> = ({ onMerchantClick, onAdminLogin
       case 'merchant-register': return <MerchantRegisterView systemId={viewParams?.systemId} onComplete={onMerchantClick} onBack={() => handleNavigate('all-systems')} />;
       case 'system-landing': 
         return activeSystem && systemsData[activeSystem] 
-          ? <SystemLanding 
-              system={systemsData[activeSystem]} 
-              onMerchantClick={(type) => handleNavigate('merchant-register', { systemId: type })} 
+          ? <SystemLandingPage 
+              systemId={activeSystem}
+              onBack={() => handleNavigate('all-systems')}
+              onStartDashboard={(systemId) => handleNavigate('merchant-register', { systemId })} 
             />
           : null;
       case 'profile': return <UserProfileView onNavigate={handleNavigate} />;
